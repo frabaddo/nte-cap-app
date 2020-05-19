@@ -1,4 +1,4 @@
-package com.example.app;
+package com.notTheEnd;
 
 import android.os.Bundle;
 
