@@ -1,0 +1,36 @@
+ion-content{
+    --padding-top: 32px;
+    --background:url("../../assets/Sfondo.jpg") no-repeat center center / cover;
+}
+ion-header{
+    ion-toolbar{
+        --background:url("../../assets/Header.png") no-repeat center center / cover;
+        opacity: 0;
+    }
+} 
+ion-header::after{
+    background: none;
+}
+.fumble{
+    --padding-start:0px;
+    height: 50px;
+    --border-color:var(--ion-color-medium);
+    ion-img{
+        height: 30px;
+        width: 30px;
+        margin-right: 16px;
+    }
+}
+.github{
+    display: block;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    ion-text{
+        vertical-align: top;
+    }
+    ion-icon{
+        vertical-align: top;
+        margin-right: 8px;
+    }
+}

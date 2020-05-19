@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'share-result',
     loadChildren: () => import('./share-result/share-result.module').then( m => m.ShareResultPageModule)
   },
+  {
+    path: 'privacy',
+    loadChildren: () => import('./privacy/privacy.module').then( m => m.PrivacyPageModule)
+  },
 ];
 
 @NgModule({
