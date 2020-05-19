@@ -1,20 +1,94 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title color="light" mode="md">
+      NOT THE END
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-text-center">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" class="grid-separator">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <p style="font-size: 18px;" class="grid-element-equal-margin">ADRENALINA</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <ion-checkbox style="--size: 22px;" mode="md" class="grid-element-equal-margin" [(ngModel)]="adrenalin"></ion-checkbox>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col size="6">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <p style="font-size: 18px;" class="grid-element-equal-margin">CONFUSIONE</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <ion-checkbox style="--size: 22px;" mode="md" class="grid-element-equal-margin" [(ngModel)]="confusion"></ion-checkbox>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="select-token">
+    <div style="font-size: 18px;" class="title-container">
+      <p class="grid-title">SACCHETTO</p>
+    </div>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="3" class="ion-text-center">
+          <ion-fab-button color="ligth" size="small" (click)="decrement(true)">
+            <ion-icon name="remove"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+        <ion-col size="6" style="margin-top: 5px;">
+          <img [src]="confusion?'../../assets/TokenBiancoConfusione.png':'../../assets/TokenBianco.png'">
+          <ion-input class="token-number bianco" inputmode="numeric" [(ngModel)]="whiteToExtract"></ion-input>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+          <ion-fab-button color="ligth" size="small" (click)="increment(true)">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="3" class="ion-text-center">
+          <ion-fab-button color="dark" size="small" (click)="decrement(false)">
+            <ion-icon name="remove"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+        <ion-col size="6" style="margin-top: 5px;">
+          <img src="../../assets/TokenNero.png">
+          <ion-input class="token-number nero" inputmode="numeric" [(ngModel)]="blackToExtract"></ion-input>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+          <ion-fab-button color="dark" size="small" (click)="increment(false)">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
+
+  <ion-button class="ion-margin-bottom big-button" [disabled]="!(this.whiteToExtract>0&&this.blackToExtract>0)" (click)="preparebag()">
+    {{adrenalin?"Estrai":"Avanti"}}
+  </ion-button>
+
 </ion-content>

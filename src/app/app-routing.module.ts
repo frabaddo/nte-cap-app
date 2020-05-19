@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'result',
+    loadChildren: () => import('./result/result.module').then( m => m.ResultPageModule)
+  },
+  {
+    path: 'token-selection',
+    loadChildren: () => import('./token-selection/token-selection.module').then( m => m.TokenSelectionPageModule)
+  },
+  {
+    path: 'share-result',
+    loadChildren: () => import('./share-result/share-result.module').then( m => m.ShareResultPageModule)
+  },
 ];
 
 @NgModule({

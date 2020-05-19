@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="light" mode="md">
+      NOT THE END
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid class="ion-margin-bottom number-grid">
+    <p style="font-size: 18px;" class="grid-title">TOKEN DA ESTRARRE</p>
+    <ion-row>
+      <ion-col size="3" class="ion-text-center">
+        <ion-fab-button color="medium" [class.selected]="tokenToExtract==1" (click)="tokenToExtract=1">
+          1
+        </ion-fab-button>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <ion-fab-button [disabled]="bag.Tokens.length<2" color="medium" [class.selected]="tokenToExtract==2" (click)="tokenToExtract=2">
+          2
+        </ion-fab-button>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <ion-fab-button [disabled]="bag.Tokens.length<3" color="medium" [class.selected]="tokenToExtract==3" (click)="tokenToExtract=3">
+          3
+        </ion-fab-button>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <ion-fab-button [disabled]="bag.Tokens.length<4" color="medium" [class.selected]="tokenToExtract==4" (click)="tokenToExtract=4">
+          4
+        </ion-fab-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-margin-vertical ion-padding-top action-grid">
+    <ion-row>
+      <ion-col size="6" class="ion-text-center">
+        <ion-button class="big-button grey"  fill="outline" expand="block" (click)="goBack()">
+          Indietro
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-button class="big-button"  expand="block" (click)="Extract()">
+          Estrai!
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

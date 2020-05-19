@@ -1,0 +1,13 @@
+{
+  "appId": "com.notTheEnd",
+  "appName": "Not The End Token Bag",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

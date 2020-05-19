@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Not The End Token Bag</string>
+    <string name="title_activity_main">Not The End Token Bag</string>
+    <string name="package_name">com.notTheEnd</string>
+    <string name="custom_url_scheme">com.notTheEnd</string>
+</resources>

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Plugins, StatusBarStyle } from '@capacitor/core';
+import { PopoverController } from '@ionic/angular';
+import { InfoComponent } from './info/info.component';
+const { SplashScreen, StatusBar, App } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -11,17 +13,30 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private router : Router,
+    private popover : PopoverController
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+    StatusBar.setStyle({
+      style: StatusBarStyle.Dark
     });
+    SplashScreen.hide();
+    App.addListener('backButton', () => {
+      if(this.router.url=="/"||this.router.url.includes("/home"))App.exitApp();
+      else this.router.navigate(['/home'],{ queryParams: { refresh: true } });
+    });
+  }
+
+  async loadinfo(){
+    let pop=this.popover.create({
+      component:InfoComponent,
+      backdropDismiss:true,
+      showBackdrop:true,
+      cssClass:"info-pop"
+    });
+    (await pop).present();
   }
 }
