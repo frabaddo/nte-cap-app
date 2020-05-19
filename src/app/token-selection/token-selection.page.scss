@@ -27,11 +27,20 @@ ion-fab-button{
 
 .action-grid{
     padding-bottom: 16px;
-    border-bottom: 2px solid var(--ion-color-medium);
+    //border-bottom: 2px solid var(--ion-color-medium);
     ion-button{
         max-width: 300px;
         margin: auto;
     }
+}
+.action-grid::after {
+    content: "";
+    height: 2px;
+    position: absolute;
+    width: 1000%;
+    background: var(--ion-color-medium);
+    transform: translateX(-50%);
+    margin-top: 40px;
 }
 
 .number-grid{

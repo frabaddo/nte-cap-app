@@ -12,74 +12,80 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   
-  <div class="content">
-
-    <ion-grid class="ion-margin-top">
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="4">
-          <img src="'../../assets/Sacchetto.png">
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  
-    <h2 class="extracted-label">
-      ESTRATTI {{bag.ExtractedToken.length+bag.RiskExtractedToken.length}}/{{bag.ExtractedToken.length+bag.RiskExtractedToken.length+bag.Tokens.length}}
-    </h2>
-  
-    <ion-grid class="ion-padding-horizontal">
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="3" *ngFor="let token of bag.ExtractedToken; let first = first; let last=last" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
-          <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    
-    <ion-grid class="ion-padding-horizontal" *ngIf="bag.yetExtrctedRisk; else risktemp">
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="3" *ngFor="let token of bag.RiskExtractedToken; let first = first; let last=last" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
-          <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  
-    <ng-template #risktemp>
-      <ion-grid class="ion-margin-bottom">
-        <ion-row class="ion-justify-content-center">
-          <ion-col>
-            <ion-button class="big-button grey" fill="outline" *ngIf="bag.isExtracteable" (click)="Risk()">
-              Rischia
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ng-template>
-  
-    <ion-grid class="ion-margin-top">
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="big-button grey" (click)="ShareResult()">
-            Condividi
-          </ion-button>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button expand="block" class="big-button" (click)="End()">
-            Fine
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <div class="push"></div>
-  </div>
-
-  <ion-grid class="ion-margin-top">
-    <ion-row>
-      <ion-col class="made-by">
-        <p>Made with love by</p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="logo">
-        <img [src]="'../../assets/LogoNero.svg'">
+  <ion-grid fixed class="ion-no-padding" style="height: 100%;">
+    <ion-row style="height: 100%;">
+      <ion-col>
+        <div class="content">
+      
+          <ion-grid class="ion-margin-top">
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="4">
+                <img src="'../../assets/Sacchetto.png">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        
+          <h2 class="extracted-label">
+            ESTRATTI {{bag.ExtractedToken.length+bag.RiskExtractedToken.length}}/{{bag.ExtractedToken.length+bag.RiskExtractedToken.length+bag.Tokens.length}}
+          </h2>
+        
+          <ion-grid class="ion-padding-horizontal">
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="3" *ngFor="let token of bag.ExtractedToken; let first = first; let last=last" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
+                <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          
+          <ion-grid class="ion-padding-horizontal" *ngIf="bag.yetExtrctedRisk; else risktemp">
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="3" *ngFor="let token of bag.RiskExtractedToken; let first = first; let last=last" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
+                <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        
+          <ng-template #risktemp>
+            <ion-grid class="ion-margin-bottom">
+              <ion-row class="ion-justify-content-center">
+                <ion-col>
+                  <ion-button class="big-button grey" fill="outline" *ngIf="bag.isExtracteable" (click)="Risk()">
+                    Rischia
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ng-template>
+        
+          <ion-grid class="ion-margin-top">
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="6" style="padding: 4px;">
+                <ion-button expand="block" fill="outline" class="big-button grey" (click)="ShareResult()">
+                  Condividi
+                </ion-button>
+              </ion-col>
+              <ion-col size="6" style="padding: 4px;">
+                <ion-button expand="block" class="big-button" (click)="End()">
+                  Fine
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <div class="push"></div>
+        </div>
+      
+        <ion-grid class="ion-margin-top">
+          <ion-row>
+            <ion-col class="made-by">
+              <p>Made with love by</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="logo">
+              <img [src]="'../../assets/LogoNero.svg'">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-col>
     </ion-row>
   </ion-grid>
