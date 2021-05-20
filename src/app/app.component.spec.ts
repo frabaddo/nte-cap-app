@@ -1,7 +1,13 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { InfoComponent } from './info/info.component';
 
 describe('AppComponent', () => {
 
@@ -11,9 +17,13 @@ describe('AppComponent', () => {
     platformReadySpy = Promise.resolve();
 
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [],
+      declarations: [AppComponent,InfoComponent],
+      imports: [BrowserModule, IonicModule.forRoot({hardwareBackButton: false}), AppRoutingModule],
+      providers: [
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        { provide: APP_BASE_HREF, useValue : '/' }
+      ],
     }).compileComponents();
   }));
 

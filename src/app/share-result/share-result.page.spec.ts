@@ -1,5 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
+import { of } from 'rxjs';
 
 import { ShareResultPage } from './share-result.page';
 
@@ -10,7 +15,20 @@ describe('ShareResultPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ShareResultPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [
+        CommonModule,
+        FormsModule,
+        RouterTestingModule,
+        IonicModule.forRoot()
+      ],
+      providers:[
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            queryParams: of({t:0,r:0,e:0})
+          }
+        }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShareResultPage);
