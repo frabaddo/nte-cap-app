@@ -11,10 +11,7 @@ import { InfoComponent } from './info/info.component';
 
 describe('AppComponent', () => {
 
-  let platformReadySpy;
-
   beforeEach(async(() => {
-    platformReadySpy = Promise.resolve();
 
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -31,11 +28,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it('should initialize the app', async () => {
-    TestBed.createComponent(AppComponent);
-    await platformReadySpy;
   });
 
   // TODO: add more tests!

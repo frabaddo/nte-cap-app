@@ -22,8 +22,8 @@ export class AppComponent {
   initializeApp() {
     StatusBar.setStyle({
       style: StatusBarStyle.Dark
-    });
-    SplashScreen.hide();
+    }).catch((err)=>console.log);
+    SplashScreen.hide().catch((err)=>console.log);;
     App.addListener('backButton', () => {
       if(this.router.url=="/"||this.router.url.includes("/home"))App.exitApp();
       else this.router.navigate(['/home'],{ queryParams: { refresh: true } });

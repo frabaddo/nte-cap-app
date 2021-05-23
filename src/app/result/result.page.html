@@ -29,7 +29,7 @@
             ESTRATTI {{bag.ExtractedToken.length+bag.RiskExtractedToken.length}}/{{bag.ExtractedToken.length+bag.RiskExtractedToken.length+bag.Tokens.length}}
           </h2>
         
-          <ion-grid class="ion-padding-horizontal">
+          <ion-grid class="ion-padding-horizontal tokens">
             <ion-row class="ion-justify-content-center">
               <ion-col size="3" *ngFor="let token of bag.ExtractedToken; let first = first; let last=last" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
                 <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
@@ -37,7 +37,7 @@
             </ion-row>
           </ion-grid>
           
-          <ion-grid class="ion-padding-horizontal" *ngIf="bag.yetExtrctedRisk; else risktemp">
+          <ion-grid class="ion-padding-horizontal tokens" *ngIf="bag.yetExtrctedRisk; else risktemp">
             <ion-row class="ion-justify-content-center">
               <ion-col size="3" *ngFor="let token of bag.RiskExtractedToken; let first = first; let last=last" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
                 <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
