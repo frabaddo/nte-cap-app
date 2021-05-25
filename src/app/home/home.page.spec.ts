@@ -146,21 +146,18 @@ describe('HomePage', () => {
   it('should be able to refresh on return', fakeAsync(() => {
     component.increment(true);
     component.increment(false);
-
     component.preparebag();
     tick();
+
     router.navigate([""],{queryParams:{refresh:true}});
+    tick();
+    component.ionViewWillEnter();
     tick();
 
     expect(location.path()).toBe('/?refresh=true');
-
     expect(component.blackToExtract).toEqual(1);
     expect(component.whiteToExtract).toEqual(1);
-
-    // component.preparebag();
-    // tick();
-
-    // expect(bag.ExtractedToken.length).toEqual(0);
-    // expect(bag.Tokens.length).toEqual(2);
+    expect(bag.ExtractedToken.length).toEqual(0);
+    expect(bag.Tokens.length).toEqual(0);
   }));
 });
