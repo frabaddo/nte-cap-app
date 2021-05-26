@@ -52,6 +52,9 @@ describe('HomePage', () => {
 
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
+
+    spyOn(component.bag,"insertTokens").and.callThrough();
+
     element = fixture.debugElement;
     fixture.detectChanges();
   }));
@@ -60,34 +63,79 @@ describe('HomePage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be able to add token white',()=>{
-    element.query(By.css("#white-tokens ion-row ion-col:nth-child(3) ion-fab-button")).triggerEventHandler("click", null);
-    
-    expect(component.whiteToExtract).toEqual(2);
+  describe("should be able to add token",()=>{
+    it('white',()=>{
+      element.query(By.css("#white-tokens ion-row ion-col:nth-child(3) ion-fab-button")).triggerEventHandler("click", null);
+      
+      expect(component.whiteToExtract).toEqual(2);
+    })
+  
+    it('black',()=>{
+      element.query(By.css("#black-tokens ion-row ion-col:nth-child(3) ion-fab-button")).triggerEventHandler("click", null);
+  
+      expect(component.blackToExtract).toEqual(2);
+    })
   })
 
-  it('should be able to add token black',()=>{
-    element.query(By.css("#black-tokens ion-row ion-col:nth-child(3) ion-fab-button")).triggerEventHandler("click", null);
-
-    expect(component.blackToExtract).toEqual(2);
+  describe("should be able to decrease token ",()=>{
+    it('white',()=>{
+      element.query(By.css("#white-tokens ion-row ion-col:nth-child(3) ion-fab-button")).triggerEventHandler("click", null);
+      expect(component.whiteToExtract).toEqual(2);
+  
+      element.query(By.css("#white-tokens ion-row ion-col:nth-child(1) ion-fab-button")).triggerEventHandler("click", null);
+  
+      expect(component.whiteToExtract).toEqual(1);
+    })
+  
+    it('black',()=>{
+      element.query(By.css("#black-tokens ion-row ion-col:nth-child(3) ion-fab-button")).triggerEventHandler("click", null);
+      expect(component.blackToExtract).toEqual(2);
+  
+      element.query(By.css("#black-tokens ion-row ion-col:nth-child(1) ion-fab-button")).triggerEventHandler("click", null);
+  
+      expect(component.blackToExtract).toEqual(1);
+    })
   })
 
-  it('should be able to decrease token white',()=>{
-    element.query(By.css("#white-tokens ion-row ion-col:nth-child(3) ion-fab-button")).triggerEventHandler("click", null);
-    expect(component.whiteToExtract).toEqual(2);
-
-    element.query(By.css("#white-tokens ion-row ion-col:nth-child(1) ion-fab-button")).triggerEventHandler("click", null);
-
-    expect(component.whiteToExtract).toEqual(1);
-  })
-
-  it('should be able to decrease token black',()=>{
-    element.query(By.css("#black-tokens ion-row ion-col:nth-child(3) ion-fab-button")).triggerEventHandler("click", null);
-    expect(component.blackToExtract).toEqual(2);
-
-    element.query(By.css("#black-tokens ion-row ion-col:nth-child(1) ion-fab-button")).triggerEventHandler("click", null);
-
-    expect(component.blackToExtract).toEqual(1);
+  describe("bag preparation",()=>{
+    it('be able to prepare bag', fakeAsync(() => {
+      component.increment(true);
+      component.increment(false);
+  
+      component.preparebag();
+      tick();
+  
+      expect(location.path()).toBe('/token-selection');
+      expect(bag.Tokens.length).toEqual(4);
+      expect(bag.insertTokens).toHaveBeenCalledTimes(1);
+    }));
+  
+    it('be able to prepare bag with adrenalin', fakeAsync(() => {
+      component.increment(true);
+      component.increment(false);
+      component.adrenalin = true;
+  
+      component.preparebag();
+      tick();
+  
+      expect(location.path()).toBe('/result');
+      expect(bag.ExtractedToken.length).toEqual(4)
+      expect(bag.Tokens.length).toEqual(0);
+      expect(bag.insertTokens).toHaveBeenCalledTimes(1);
+    }));
+  
+    it('cant prepare empty bag', fakeAsync(() => {
+      component.whiteToExtract=0;
+      component.blackToExtract=0;
+  
+      component.preparebag();
+      tick();
+  
+      expect(location.path()).toBe('/');
+      expect(bag.ExtractedToken.length).toEqual(0);
+      expect(bag.Tokens.length).toEqual(0);
+      expect(bag.insertTokens).toHaveBeenCalledTimes(0);
+    }));
   })
 
   it('should be able to clean bag',()=>{
@@ -103,45 +151,6 @@ describe('HomePage', () => {
     expect(component.confusion).toBeFalse();
     expect(component.adrenalin).toBeFalse();
   })
-
-  it('be able to prepare bag', fakeAsync(() => {
-    component.increment(true);
-    component.increment(false);
-
-    component.preparebag();
-    tick();
-
-    expect(location.path()).toBe('/token-selection');
-    expect(bag.isExtracteable).toBeTrue();
-    expect(bag.ExtractedToken.length).toEqual(0)
-    expect(bag.Tokens.length).toEqual(4);
-  }));
-
-  it('be able to prepare bag with adrenalin', fakeAsync(() => {
-    component.increment(true);
-    component.increment(false);
-    component.adrenalin = true;
-
-    component.preparebag();
-    tick();
-
-    expect(location.path()).toBe('/result');
-    expect(bag.isExtracteable).toBeFalse();
-    expect(bag.ExtractedToken.length).toEqual(4)
-    expect(bag.Tokens.length).toEqual(0);
-  }));
-
-  it('cant prepare empty bag', fakeAsync(() => {
-    component.whiteToExtract=0;
-    component.blackToExtract=0;
-
-    component.preparebag();
-    tick();
-
-    expect(location.path()).toBe('/');
-    expect(bag.ExtractedToken.length).toEqual(0);
-    expect(bag.Tokens.length).toEqual(0);
-  }));
 
   it('should be able to refresh on return', fakeAsync(() => {
     component.increment(true);
