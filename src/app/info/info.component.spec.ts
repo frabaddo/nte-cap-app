@@ -2,7 +2,7 @@ import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, PopoverController } from '@ionic/angular';
 
 import { InfoComponent } from './info.component';
 
@@ -10,11 +10,21 @@ describe('InfoComponent', () => {
   let component: InfoComponent;
   let fixture: ComponentFixture<InfoComponent>;
   let element: DebugElement;
+  let popoverController: jasmine.SpyObj<PopoverController>;
+
+  beforeEach(async(() => {
+    popoverController = jasmine.createSpyObj("PopoverController",{
+      dismiss : ()=>{}
+    })
+  }));
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ InfoComponent ],
-      imports: [IonicModule.forRoot(),RouterTestingModule]
+      imports: [IonicModule.forRoot(),RouterTestingModule],
+      providers:[
+        { provide: PopoverController , useValue: popoverController }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(InfoComponent);
@@ -28,9 +38,8 @@ describe('InfoComponent', () => {
   });
 
   it('should close popover on close button', () => {
-    let spy = spyOn(component,"close");
     element.query(By.css('ion-button[slot="end"]')).triggerEventHandler("click",null);
 
-    expect(spy).toHaveBeenCalled();
+    expect(popoverController.dismiss).toHaveBeenCalled();
   });
 });
