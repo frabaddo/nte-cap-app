@@ -1,5 +1,5 @@
 ion-content{
-    --background:url("../../assets/Sfondo.jpg") no-repeat center center / cover;
+    --background:var(--main-background) no-repeat center center / cover;
 }
 ion-header ion-toolbar{
     --background:url("../../assets/Header.png") no-repeat center center / cover;
