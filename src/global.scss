@@ -43,7 +43,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .info-pop{
-    --max-width: 90%;
+    --max-width: min(360px,90%);
     --max-height: 90%;
     --width: 90%;
 }
