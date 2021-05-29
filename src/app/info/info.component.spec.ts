@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule, PopoverController } from '@ionic/angular';
@@ -10,21 +10,12 @@ describe('InfoComponent', () => {
   let component: InfoComponent;
   let fixture: ComponentFixture<InfoComponent>;
   let element: DebugElement;
-  let popoverController: jasmine.SpyObj<PopoverController>;
-
-  beforeEach(async(() => {
-    popoverController = jasmine.createSpyObj("PopoverController",{
-      dismiss : ()=>{}
-    })
-  }));
+  let popoverController: PopoverController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ InfoComponent ],
       imports: [IonicModule.forRoot(),RouterTestingModule],
-      providers:[
-        { provide: PopoverController , useValue: popoverController }
-      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(InfoComponent);
@@ -32,6 +23,11 @@ describe('InfoComponent', () => {
     element = fixture.debugElement;
     fixture.detectChanges();
   }));
+
+  beforeEach(inject([PopoverController],(popo)=>{
+    jest.spyOn(popo,"dismiss").mockImplementation(()=>{return Promise.resolve(false)});
+    popoverController = popo;
+  }))
 
   it('should create', () => {
     expect(component).toBeTruthy();

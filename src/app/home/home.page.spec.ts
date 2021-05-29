@@ -53,7 +53,7 @@ describe('HomePage', () => {
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
 
-    spyOn(component.bag,"insertTokens").and.callThrough();
+    jest.spyOn(component.bag,"insertTokens");
 
     element = fixture.debugElement;
     fixture.detectChanges();
@@ -148,8 +148,8 @@ describe('HomePage', () => {
 
     expect(component.blackToExtract).toEqual(1);
     expect(component.whiteToExtract).toEqual(1);
-    expect(component.confusion).toBeFalse();
-    expect(component.adrenalin).toBeFalse();
+    expect(component.confusion).toBeFalsy();
+    expect(component.adrenalin).toBeFalsy();
   })
 
   it('should be able to refresh on return', fakeAsync(() => {

@@ -84,8 +84,8 @@ describe('Bag', () => {
     
     let after = bag.isExtracteable;
 
-    expect(before).toBeFalse();
-    expect(after).toBeTrue();
+    expect(before).toBeFalsy();
+    expect(after).toBeTruthy();
   });
 
   it('should be extract right number of tokens if not enought', () => {
@@ -117,7 +117,7 @@ describe('Bag', () => {
     
     let after = bag.isExtracteable;
 
-    expect(before).toBeFalse();
-    expect(after).toBeTrue();
+    expect(before).toBeFalsy();
+    expect(after).toBeTruthy();
   });
 });
