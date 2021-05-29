@@ -16,10 +16,10 @@ import {
     trigger('enter', [
       transition(':enter', [
         style({ opacity: 0, transform:"scale(0)" }),
-        animate('1400ms', style({ opacity: 1, transform:"scale(1)" })),
+        animate('250ms', style({ opacity: 1, transform:"scale(1)" })),
       ]),
       transition(':leave', [
-        animate('1400ms', style({ opacity: 0, transform:"scale(0)" }))
+        animate('250ms', style({ opacity: 0, transform:"scale(0)" }))
       ])
     ]),
   ]

@@ -107,7 +107,7 @@
           </ion-grid>
         </div>
       
-        <ion-button class="ion-margin-bottom big-button" [disabled]="!((this.whiteToExtract>0&&this.blackToExtract>0)||(this.confusionToExtract>0&&this.blackToExtract>0))" (click)="preparebag()">
+        <ion-button class="ion-margin-bottom big-button" [disabled]="!((this.whiteToExtract>0&&this.blackToExtract>0)||(this.confusion&&this.confusionToExtract>0&&this.blackToExtract>0))" (click)="preparebag()">
           {{adrenalin?"Estrai":"Avanti"}}
         </ion-button>
       </ion-col>
