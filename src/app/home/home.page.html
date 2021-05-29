@@ -54,16 +54,34 @@
           <ion-grid id="white-tokens">
             <ion-row class="ion-align-items-center">
               <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="ligth" size="small" (click)="decrement(true)">
+                <ion-fab-button color="ligth" size="small" (click)="decrement(0)">
                   <ion-icon name="remove"></ion-icon>
                 </ion-fab-button>
               </ion-col>
               <ion-col size="6" style="margin-top: 5px;">
-                <img [src]="confusion?'../../assets/TokenBiancoConfusione.png':'../../assets/TokenBianco.png'">
+                <img src="../../assets/TokenBianco.png">
                 <ion-input class="token-number bianco" inputmode="numeric" [(ngModel)]="whiteToExtract"></ion-input>
               </ion-col>
               <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="ligth" size="small" (click)="increment(true)">
+                <ion-fab-button color="ligth" size="small" (click)="increment(0)">
+                  <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-grid id="confusion-tokens" *ngIf="confusion" @enter>
+            <ion-row class="ion-align-items-center">
+              <ion-col size="3" class="ion-text-center">
+                <ion-fab-button color="ligth" size="small" (click)="decrement(2)">
+                  <ion-icon name="remove"></ion-icon>
+                </ion-fab-button>
+              </ion-col>
+              <ion-col size="6" style="margin-top: 5px;">
+                <img src="../../assets/TokenBiancoConfusione.png">
+                <ion-input class="token-number bianco" inputmode="numeric" [(ngModel)]="confusionToExtract"></ion-input>
+              </ion-col>
+              <ion-col size="3" class="ion-text-center">
+                <ion-fab-button color="ligth" size="small" (click)="increment(2)">
                   <ion-icon name="add"></ion-icon>
                 </ion-fab-button>
               </ion-col>
@@ -72,7 +90,7 @@
           <ion-grid id="black-tokens">
             <ion-row class="ion-align-items-center">
               <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="dark" size="small" (click)="decrement(false)">
+                <ion-fab-button color="dark" size="small" (click)="decrement(1)">
                   <ion-icon name="remove"></ion-icon>
                 </ion-fab-button>
               </ion-col>
@@ -81,7 +99,7 @@
                 <ion-input class="token-number nero" inputmode="numeric" [(ngModel)]="blackToExtract"></ion-input>
               </ion-col>
               <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="dark" size="small" (click)="increment(false)">
+                <ion-fab-button color="dark" size="small" (click)="increment(1)">
                   <ion-icon name="add"></ion-icon>
                 </ion-fab-button>
               </ion-col>
@@ -89,7 +107,7 @@
           </ion-grid>
         </div>
       
-        <ion-button class="ion-margin-bottom big-button" [disabled]="!(this.whiteToExtract>0&&this.blackToExtract>0)" (click)="preparebag()">
+        <ion-button class="ion-margin-bottom big-button" [disabled]="!((this.whiteToExtract>0&&this.blackToExtract>0)||(this.confusionToExtract>0&&this.blackToExtract>0))" (click)="preparebag()">
           {{adrenalin?"Estrai":"Avanti"}}
         </ion-button>
       </ion-col>

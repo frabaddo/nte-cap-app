@@ -20,6 +20,9 @@
     font-family:  'Gemeli Mono' !important;
     --ion-grid-width-xl: 720px;
     --ion-grid-width-lg: 720px;
+    ion-header ion-toolbar:last-of-type {
+        --border-width: 0 0 0px;
+    }
 }
 
 /* Core CSS required for Ionic components to work properly */

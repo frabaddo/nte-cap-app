@@ -99,8 +99,8 @@ describe('HomePage', () => {
 
   describe("bag preparation",()=>{
     it('be able to prepare bag', fakeAsync(() => {
-      component.increment(true);
-      component.increment(false);
+      component.increment(0);
+      component.increment(1);
   
       component.preparebag();
       tick();
@@ -111,8 +111,8 @@ describe('HomePage', () => {
     }));
   
     it('be able to prepare bag with adrenalin', fakeAsync(() => {
-      component.increment(true);
-      component.increment(false);
+      component.increment(0);
+      component.increment(1);
       component.adrenalin = true;
   
       component.preparebag();
@@ -139,8 +139,8 @@ describe('HomePage', () => {
   })
 
   it('should be able to clean bag',()=>{
-    component.increment(true);
-    component.increment(false);
+    component.increment(0);
+    component.increment(1);
     component.confusion = true;
     component.adrenalin = true;
 
@@ -153,8 +153,8 @@ describe('HomePage', () => {
   })
 
   it('should be able to refresh on return', fakeAsync(() => {
-    component.increment(true);
-    component.increment(false);
+    component.increment(0);
+    component.increment(1);
     component.preparebag();
     tick();
 

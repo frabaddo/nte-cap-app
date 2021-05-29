@@ -32,26 +32,24 @@ export class Bag {
         }
     }
 
-    insertTokens(white:number,black:number,confusion=false){
+    insertTokens(white:number,black:number,confusionToken:number=0,confusion=false){
         if(!this.yetInserted){
             this.yetInserted=true;
             this.Tokens=this.Tokens.concat(Array.from(
                 { length: black },
                 () => (new Token(Tokencolor.Black))
             ));
+            this.Tokens=this.Tokens.concat(Array.from(
+                { length: white },
+                () => (new Token(Tokencolor.White))
+            ));
             if(confusion){
                 this.Tokens=this.Tokens.concat(Array.from(
-                    { length: white },
+                    { length: confusionToken },
                     () => {
                         if(Math.random() >= 0.5) return new Token(Tokencolor.White);
                         else return new Token(Tokencolor.Black);
                     }
-                ));
-            }
-            else{
-                this.Tokens=this.Tokens.concat(Array.from(
-                    { length: white },
-                    () => (new Token(Tokencolor.White))
                 ));
             }
         }

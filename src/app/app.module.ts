@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -11,7 +12,7 @@ import { InfoComponent } from './info/info.component';
 @NgModule({
   declarations: [AppComponent,InfoComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot({hardwareBackButton: false}), AppRoutingModule],
+  imports: [BrowserModule, BrowserAnimationsModule, IonicModule.forRoot({hardwareBackButton: false}), AppRoutingModule],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

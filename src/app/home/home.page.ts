@@ -1,17 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { BagService } from '../bag.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {
+  trigger,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  animations:[
+    trigger('enter', [
+      transition(':enter', [
+        style({ opacity: 0, transform:"scale(0)" }),
+        animate('1400ms', style({ opacity: 1, transform:"scale(1)" })),
+      ]),
+      transition(':leave', [
+        animate('1400ms', style({ opacity: 0, transform:"scale(0)" }))
+      ])
+    ]),
+  ]
 })
 export class HomePage implements OnInit{
 
   whiteToExtract=1;
 
   blackToExtract=1;
+  
+  confusionToExtract=0;
 
   confusion=false;
 
@@ -29,6 +48,7 @@ export class HomePage implements OnInit{
         if(params.refresh){
           this.blackToExtract=1;
           this.whiteToExtract=1;
+          this.confusionToExtract=0;
           this.confusion=false;
           this.adrenalin=false;
         }
@@ -47,8 +67,8 @@ export class HomePage implements OnInit{
   }
 
   preparebag(){
-    if(this.whiteToExtract>0&&this.blackToExtract>0){
-      this.bag.insertTokens(this.whiteToExtract,this.blackToExtract,this.confusion);
+    if(((this.confusion&&(this.whiteToExtract>0||this.confusionToExtract>0))||this.whiteToExtract>0)&&this.blackToExtract>0){
+      this.bag.insertTokens(this.whiteToExtract,this.blackToExtract,this.confusionToExtract,this.confusion);
       if(this.adrenalin){
         this.bag.extractTokens(4);
         this.router.navigate(["/result"]);
@@ -57,14 +77,16 @@ export class HomePage implements OnInit{
     }
   }
 
-  increment(white){
-    if(white)this.whiteToExtract++;
-    else this.blackToExtract++;
+  increment(type){
+    if(type==0)this.whiteToExtract++;
+    else if(type==1)this.blackToExtract++;
+    else if(type==2)this.confusionToExtract++;
   }
 
-  decrement(white){
-    if(white&&this.whiteToExtract>0)this.whiteToExtract--;
-    else if(!white&&this.blackToExtract>0)this.blackToExtract--;
+  decrement(type){
+    if(type==0&&this.whiteToExtract>0)this.whiteToExtract--;
+    else if(type==1&&this.blackToExtract>0)this.blackToExtract--;
+    else if(type==2&&this.confusionToExtract>0)this.confusionToExtract--;
   }
 
   doRefresh(event) {
