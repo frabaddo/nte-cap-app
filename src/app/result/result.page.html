@@ -44,9 +44,36 @@
               </ion-col>
             </ion-row>
           </ion-grid>
+
+          <ng-container *ngIf="bag.revealRemains">
+            <h2 class="extracted-label">
+              NON ESTRATTI
+            </h2>
+  
+            <ion-grid class="ion-padding-horizontal tokens">
+              <ion-row class="ion-justify-content-center">
+                <ion-col size="3" class="extracted-token" [class.first-token]="true">
+                  <span class="remain-number">
+                    <ion-text color="dark">
+                      {{WhiteRemain}}
+                    </ion-text>
+                  </span>
+                  <img src="../../assets/TokenBiancoPiccolo.png">
+                </ion-col>
+                <ion-col size="3" class="extracted-token" [class.last-token]="true">
+                  <span class="remain-number">
+                    <ion-text color="light">
+                      {{BlackRemain}}
+                    </ion-text>
+                  </span>
+                  <img src="../../assets/TokenNeroPiccolo.png">
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ng-container>
         
           <ng-template #risktemp>
-            <ion-grid class="ion-margin-bottom">
+            <ion-grid class="ion-margin-bottom" *ngIf="!bag.revealRemains">
               <ion-row class="ion-justify-content-center">
                 <ion-col>
                   <ion-button class="big-button grey" fill="outline" *ngIf="bag.isExtracteable" (click)="Risk()">
@@ -58,6 +85,13 @@
           </ng-template>
         
           <ion-grid class="ion-margin-top">
+            <ion-row class="ion-justify-content-center ion-margin" *ngIf="!bag.revealRemains">
+              <ion-col style="padding: 4px;">
+                <ion-button expand="block" fill="outline" class="big-button grey" (click)="revealTokens()">
+                  Rivela Sacchetto
+                </ion-button>
+              </ion-col>
+            </ion-row>
             <ion-row class="ion-justify-content-center">
               <ion-col size="6" style="padding: 4px;">
                 <ion-button expand="block" fill="outline" class="big-button grey" (click)="ShareResult()">

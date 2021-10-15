@@ -15,6 +15,8 @@ export class Bag {
 
     yetExtrctedRisk:Boolean=false;
 
+    revealRemains :Boolean=false;
+
     constructor(
         bag:{
             Tokens:Array<Token>,
@@ -78,6 +80,7 @@ export class Bag {
         this.yetInserted=false;
         this.yetExtracted=false;
         this.yetExtrctedRisk=false;
+        this.revealRemains=false;
     }
 
     private shuffle(a) {
