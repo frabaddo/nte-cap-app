@@ -7,6 +7,8 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-insert-token',
@@ -26,6 +28,8 @@ import {
 })
 export class InsertTokenPage implements OnInit{
 
+  $destroy: Subject<void> = new Subject()
+
   whiteToExtract=1;
 
   blackToExtract=1;
@@ -44,6 +48,7 @@ export class InsertTokenPage implements OnInit{
 
   ngOnInit(){
     this.route.queryParams
+      .pipe(takeUntil(this.$destroy))
       .subscribe(params => {
         if(params.refresh){
           this.blackToExtract=1;
@@ -60,6 +65,10 @@ export class InsertTokenPage implements OnInit{
           }})
         }
       });
+  }
+
+  ngOnDestroy(){
+    this.$destroy.next()
   }
 
   ionViewWillEnter(){

@@ -7,3 +7,7 @@ ion-header::after{
 ion-app{
     background: white //var(--main-background) no-repeat center center / cover;
 }
+ion-tab-bar{
+    background: var(--main-background) 100% 20% /100% auto;
+    --background: transparent;
+}
