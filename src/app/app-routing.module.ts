@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'sheet',
     loadChildren: () => import('./sheet/sheet.module').then( m => m.SheetPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   }
 ];
 

@@ -4,3 +4,6 @@ ion-header ion-toolbar{
 ion-header::after{
     background: none;
 }
+ion-app{
+    background: white //var(--main-background) no-repeat center center / cover;
+}
