@@ -12,13 +12,9 @@ const routes: Routes = [
     loadChildren: () => import('./bag/bag.module').then( m => m.BagModule)
   },
   {
-    path: 'privacy',
-    loadChildren: () => import('./privacy/privacy.module').then( m => m.PrivacyPageModule)
-  },
-  {
     path: 'sheet',
     loadChildren: () => import('./sheet/sheet.module').then( m => m.SheetPageModule)
-  },
+  }
 ];
 
 @NgModule({
