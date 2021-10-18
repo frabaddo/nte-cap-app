@@ -9,7 +9,7 @@ const routes: Routes = [
     },
     {
         path: 'insert-token',
-        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+        loadChildren: () => import('./insert-token/insert-token.module').then( m => m.InsertTokenPageModule)
     },
     {
         path: 'result',

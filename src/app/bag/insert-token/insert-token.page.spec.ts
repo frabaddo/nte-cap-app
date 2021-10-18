@@ -7,14 +7,14 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { BagService } from '../bag.service';
 
-import { HomePage } from './home.page';
+import { InsertTokenPage } from './insert-token.page';
 
 @Component({}) class FakePage {};
 
-describe('HomePage', () => {
-  let component: HomePage;
+describe('InsertTokenPage', () => {
+  let component: InsertTokenPage;
   let element: DebugElement;
-  let fixture: ComponentFixture<HomePage>;
+  let fixture: ComponentFixture<InsertTokenPage>;
   let router: Router;
   let location: Location;
   let bag: BagService;
@@ -22,7 +22,7 @@ describe('HomePage', () => {
   const routes: Routes = [
     {
       path:"",
-      component: HomePage
+      component: InsertTokenPage
     },
     {
       path:"token-selection",
@@ -40,7 +40,7 @@ describe('HomePage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePage ],
+      declarations: [ InsertTokenPage ],
       imports: [IonicModule.forRoot(),RouterTestingModule.withRoutes(routes)]
     }).compileComponents();
 
@@ -50,7 +50,7 @@ describe('HomePage', () => {
 
     router.initialNavigation();
 
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(InsertTokenPage);
     component = fixture.componentInstance;
 
     spyOn(component.bag,"insertTokens").and.callThrough();

@@ -9,9 +9,9 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-insert-token',
+  templateUrl: 'insert-token.page.html',
+  styleUrls: ['insert-token.page.scss'],
   animations:[
     trigger('enter', [
       transition(':enter', [
@@ -24,7 +24,7 @@ import {
     ]),
   ]
 })
-export class HomePage implements OnInit{
+export class InsertTokenPage implements OnInit{
 
   whiteToExtract=1;
 
