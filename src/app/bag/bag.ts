@@ -1,5 +1,5 @@
-import { Token } from './token';
-import { Tokencolor } from './tokencolor.enum';
+import { Token } from '../token';
+import { Tokencolor } from '../tokencolor.enum';
 
 export class Bag {
 

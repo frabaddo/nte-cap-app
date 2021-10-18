@@ -53,7 +53,7 @@ export class HomePage implements OnInit{
           this.adrenalin=false;
         }
         else if(params.share){
-          this.router.navigate(['/share-result'],{queryParams:{
+          this.router.navigate(['/bag/share-result'],{queryParams:{
             tokens:params.tokens,
             extracted:params.extracted,
             risk:params.risk
@@ -71,9 +71,9 @@ export class HomePage implements OnInit{
       this.bag.insertTokens(this.whiteToExtract,this.blackToExtract,this.confusionToExtract,this.confusion);
       if(this.adrenalin){
         this.bag.extractTokens(4);
-        this.router.navigate(["/result"]);
+        this.router.navigate(["/bag/result"]);
       } 
-      else this.router.navigate(["/token-selection"])
+      else this.router.navigate(["/bag/token-selection"])
     }
   }
 

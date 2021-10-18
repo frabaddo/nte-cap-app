@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Bag } from './bag';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BagService extends Bag {
 }

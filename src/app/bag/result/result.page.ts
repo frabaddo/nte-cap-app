@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { BagService } from '../bag.service';
 import { Router } from '@angular/router';
-import { Tokencolor } from '../tokencolor.enum';
+import { Tokencolor } from '../../tokencolor.enum';
 import { Plugins } from '@capacitor/core';
+import { environment } from 'src/environments/environment';
 const { Share } = Plugins;
 
 @Component({
@@ -38,7 +39,7 @@ export class ResultPage {
     Share.share({
       title: 'Token Estratti',
       text: '',
-      url: 'https://not-the-end.web.app/share-result?t='+this.toHexString(tokens)+'&e='+this.toHexString(extracted)+'&r='+this.toHexString(risk),
+      url: environment.publicUrl+'?t='+this.toHexString(tokens)+'&e='+this.toHexString(extracted)+'&r='+this.toHexString(risk),
       dialogTitle: 'Token Estratti'
     });
   }
@@ -48,13 +49,13 @@ export class ResultPage {
   }
 
   End(){
-    this.router.navigate(['/home'],{ queryParams: { refresh: true } }).then(()=>{
+    this.router.navigate(['/bag/home'],{ queryParams: { refresh: true } }).then(()=>{
       this.bag.cleanBag();
     });
   }
 
   doRefresh(event) {
-    this.router.navigate(['/home'],{ queryParams: { refresh: true } }).then(()=>{
+    this.router.navigate(['/bag/home'],{ queryParams: { refresh: true } }).then(()=>{
       this.bag.cleanBag();
       event.target.complete();
     });

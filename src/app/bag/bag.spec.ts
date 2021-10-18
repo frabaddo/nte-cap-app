@@ -1,5 +1,5 @@
 import { Bag } from './bag';
-import { Tokencolor } from './tokencolor.enum';
+import { Tokencolor } from '../tokencolor.enum';
 
 describe('Bag', () => {
 
