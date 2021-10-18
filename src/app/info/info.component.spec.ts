@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule, PopoverController } from '@ionic/angular';
@@ -12,13 +12,13 @@ describe('InfoComponent', () => {
   let element: DebugElement;
   let popoverController: jasmine.SpyObj<PopoverController>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     popoverController = jasmine.createSpyObj("PopoverController",{
       dismiss : ()=>{}
     })
   }));
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ InfoComponent ],
       imports: [IonicModule.forRoot(),RouterTestingModule],

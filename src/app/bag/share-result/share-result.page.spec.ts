@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -12,7 +12,7 @@ describe('ShareResultPage', () => {
   let component: ShareResultPage;
   let fixture: ComponentFixture<ShareResultPage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ShareResultPage ],
       imports: [
