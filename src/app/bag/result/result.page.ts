@@ -49,13 +49,13 @@ export class ResultPage {
   }
 
   End(){
-    this.router.navigate(['/bag/home'],{ queryParams: { refresh: true } }).then(()=>{
+    this.router.navigate(['/bag/insert-token'],{ queryParams: { refresh: true } }).then(()=>{
       this.bag.cleanBag();
     });
   }
 
   doRefresh(event) {
-    this.router.navigate(['/bag/home'],{ queryParams: { refresh: true } }).then(()=>{
+    this.router.navigate(['/bag/insert-token'],{ queryParams: { refresh: true } }).then(()=>{
       this.bag.cleanBag();
       event.target.complete();
     });

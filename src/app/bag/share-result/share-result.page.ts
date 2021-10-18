@@ -40,11 +40,11 @@ export class ShareResultPage implements OnInit {
   }
 
   End(){
-    this.router.navigate(['/bag/home'],{ queryParams: { refresh: true } });
+    this.router.navigate(['/bag/insert-token'],{ queryParams: { refresh: true } });
   }
 
   doRefresh(event) {
-    this.router.navigate(['/bag/home'],{ queryParams: { refresh: true } }).then(()=>{
+    this.router.navigate(['/bag/insert-token'],{ queryParams: { refresh: true } }).then(()=>{
       event.target.complete();
     });
   }

@@ -25,11 +25,11 @@ export class TokenSelectionPage {
 
   goBack(){
     this.bag.cleanBag();
-    this.router.navigate(["/bag/home"]);
+    this.router.navigate(["/bag/insert-token"]);
   }
 
   doRefresh(event) {
-    this.router.navigate(['/bag/home'],{ queryParams: { refresh: true } }).then(()=>{
+    this.router.navigate(['/bag/insert-token'],{ queryParams: { refresh: true } }).then(()=>{
       this.bag.cleanBag();
       event.target.complete();
     });

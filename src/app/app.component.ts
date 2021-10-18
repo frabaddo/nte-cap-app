@@ -25,8 +25,8 @@ export class AppComponent {
     }).catch((err)=>console.log);
     SplashScreen.hide().catch((err)=>console.log);;
     App.addListener('backButton', () => {
-      if(this.router.url=="/"||this.router.url.includes("/home"))App.exitApp();
-      else this.router.navigate(['/home'],{ queryParams: { refresh: true } });
+      if(this.router.url=="/"||this.router.url.includes("/insert-token"))App.exitApp();
+      else this.router.navigate(['/insert-token'],{ queryParams: { refresh: true } });
     });
   }
 
