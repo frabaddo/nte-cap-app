@@ -1,0 +1,39 @@
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+@media (orientation: landscape) {
+    .rose-container{
+        height: 100%;
+    }
+}
+@media (orientation: portrait) {
+    .rose-container{
+        width: 100%;
+    }
+}
+
+.rose-container{
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: space-evenly;
+    .rose-column{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+        --inside-sub-distance: -10%;
+        &:nth-child(-n+2){
+            margin: 0 var(--inside-sub-distance) 0 0;
+        }
+        &:nth-last-child(-n+2){
+            margin: 0 0 0 var(--inside-sub-distance);
+        }
+    }
+}

@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { SheetPageRoutingModule } from './sheet-routing.module';
 
 import { SheetPage } from './sheet.page';
+import { RoseComponent } from './rose/rose.component';
+import { HexagonComponent } from './hexagon/hexagon.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { SheetPage } from './sheet.page';
     IonicModule,
     SheetPageRoutingModule
   ],
-  declarations: [SheetPage]
+  declarations: [SheetPage, RoseComponent, HexagonComponent]
 })
 export class SheetPageModule {}
