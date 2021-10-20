@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hexagon',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hexagon.component.scss'],
 })
 export class HexagonComponent implements OnInit {
+
+  @HostListener("click", ['$event']) onclick(event) {
+    console.log(event)
+  }
 
   constructor() { }
 

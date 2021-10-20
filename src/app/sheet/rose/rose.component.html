@@ -1,4 +1,4 @@
-<div class="rose-container">
+<div class="rose-container" #rose slot="fixed" (doubletap)="doubletap($event)" (pan)="pan($event)" (panend)="panend($event)" (pinch)="pinch($event)" (pinchend)="pinchend($event)">
   <div class="rose-column">
     <app-hexagon></app-hexagon>
     <app-hexagon></app-hexagon>
