@@ -1,3 +1,4 @@
+@use "sass:math";
 :host{
     &,.inner-hexagon{
         clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
@@ -21,7 +22,7 @@
     position: absolute;
     color: var(--ion-color-dark);
     $size: 400%;
-    $scale: #{100% / ($size / 100%)};
+    $scale: math.div(100%, math.div($size , 100%));
     height: $size;
     width: $size;
     display: flex;
@@ -31,4 +32,6 @@
     left: 50%;
     transform: translate(-50%, -50%) scale($scale);
     overflow: hidden;
+    flex-direction: column;
+    padding: 85% 65%;
 }

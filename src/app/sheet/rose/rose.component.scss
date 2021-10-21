@@ -2,25 +2,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    aspect-ratio: 1/1;
 }
 
 @media (orientation: landscape) {
-    .rose-container{
+    :host{
         height: 100%;
     }
 }
 @media (orientation: portrait) {
-    .rose-container{
+    :host{
         width: 100%;
     }
 }
 
 .rose-container{
-    aspect-ratio: 1/1;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 100%;
     .rose-column{
         display: flex;
         flex-direction: column;
