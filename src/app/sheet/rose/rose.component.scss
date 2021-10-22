@@ -7,12 +7,12 @@
 
 @media (orientation: landscape) {
     :host{
-        height: 100%;
+        height: 75vh;
     }
 }
 @media (orientation: portrait) {
     :host{
-        width: 100%;
+        width: 75vw;
     }
 }
 

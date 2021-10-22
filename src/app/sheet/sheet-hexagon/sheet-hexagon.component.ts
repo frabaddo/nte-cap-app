@@ -16,12 +16,33 @@ export class SheetHexagonComponent implements OnInit {
   }
 
   constructor(
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {}
 
-  openEdit(){
-
+  async openEdit(){
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
   }
 
 }

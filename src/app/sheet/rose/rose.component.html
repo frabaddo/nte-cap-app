@@ -1,31 +1,5 @@
 <div class="rose-container">
-  <div class="rose-column">
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-  </div>
-  <div class="rose-column">
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-  </div>
-  <div class="rose-column">
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-  </div>
-  <div class="rose-column">
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-  </div>
-  <div class="rose-column">
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
-    <app-sheet-hexagon></app-sheet-hexagon>
+  <div class="rose-column" *ngFor="let columns of hexagons">
+    <app-sheet-hexagon *ngFor="let hex of columns" [element]="hex"></app-sheet-hexagon>
   </div>
 </div>
