@@ -21,7 +21,7 @@
 .container{
     position: absolute;
     color: var(--ion-color-dark);
-    $size: 400%;
+    $size: 600%;
     $scale: math.div(100%, math.div($size , 100%));
     height: $size;
     width: $size;

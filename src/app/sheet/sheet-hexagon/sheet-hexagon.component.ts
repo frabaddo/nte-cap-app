@@ -24,7 +24,7 @@ export class SheetHexagonComponent implements OnInit {
   async openEdit(){
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      message: 'Message <strong>text</strong>!!!'+JSON.stringify( this.element.position),
       buttons: [
         {
           text: 'Cancel',

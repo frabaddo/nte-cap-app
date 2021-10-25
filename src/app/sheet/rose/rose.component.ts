@@ -17,7 +17,7 @@ export class RoseComponent implements OnInit {
       if(i==0||i==4){
         return [0,1,2].map((val)=>({
           type: SheetExagonType.skill,
-          text: '',
+          text: 'axvhjvshx has ahjs scsojcdischidschidscidschndsc djsbc sdsdhjcvdsbhjcvbhdjsc sdch sjcbsdcjsdb cjhnsd csdn sdhjc bjsdc jks dcdsdschkjsdbcjsd csdjhbcjdsbcjksdb',
           position: [i, val]
         }))
       }
