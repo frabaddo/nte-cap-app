@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { TokenSelectionPage } from './token-selection.page';
+import { TokenSelectionPage } from "./token-selection.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: TokenSelectionPage
-  }
+    path: "",
+    component: TokenSelectionPage,
+  },
 ];
 
 @NgModule({

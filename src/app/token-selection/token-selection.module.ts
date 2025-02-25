@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { TokenSelectionPageRoutingModule } from './token-selection-routing.module';
+import { TokenSelectionPageRoutingModule } from "./token-selection-routing.module";
 
-import { TokenSelectionPage } from './token-selection.page';
+import { TokenSelectionPage } from "./token-selection.page";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TokenSelectionPageRoutingModule
+    TokenSelectionPageRoutingModule,
   ],
-  declarations: [TokenSelectionPage]
+  declarations: [TokenSelectionPage],
 })
 export class TokenSelectionPageModule {}

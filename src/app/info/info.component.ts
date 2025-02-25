@@ -1,18 +1,15 @@
-import { Component } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { Component } from "@angular/core";
+import { PopoverController } from "@ionic/angular";
 
 @Component({
-  selector: 'app-info',
-  templateUrl: './info.component.html',
-  styleUrls: ['./info.component.scss'],
+  selector: "app-info",
+  templateUrl: "./info.component.html",
+  styleUrls: ["./info.component.scss"],
 })
 export class InfoComponent {
+  constructor(private popover: PopoverController) {}
 
-  constructor(
-    private popover:PopoverController
-  ) { }
-
-  close(){
+  close() {
     this.popover.dismiss();
   }
 }

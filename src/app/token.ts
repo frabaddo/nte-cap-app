@@ -1,9 +1,9 @@
-import { Tokencolor } from './tokencolor.enum';
+import { Tokencolor } from "./tokencolor.enum";
 
 export class Token {
-    Color:Tokencolor;
+  Color: Tokencolor;
 
-    constructor(color:Tokencolor){
-        this.Color=color;
-    }
+  constructor(color: Tokencolor) {
+    this.Color = color;
+  }
 }

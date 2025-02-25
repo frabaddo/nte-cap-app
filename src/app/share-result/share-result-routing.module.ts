@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { ShareResultPage } from './share-result.page';
+import { ShareResultPage } from "./share-result.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: ShareResultPage
-  }
+    path: "",
+    component: ShareResultPage,
+  },
 ];
 
 @NgModule({

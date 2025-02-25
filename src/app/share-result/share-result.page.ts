@@ -1,58 +1,63 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Tokencolor } from '../tokencolor.enum';
-import { Bag } from '../bag';
-import { first } from 'rxjs/operators';
-import { Token } from '../token';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Tokencolor } from "../tokencolor.enum";
+import { Bag } from "../bag";
+import { first } from "rxjs/operators";
+import { Token } from "../token";
 
 @Component({
-  selector: 'app-share-result',
-  templateUrl: './share-result.page.html',
-  styleUrls: ['./share-result.page.scss'],
+  selector: "app-share-result",
+  templateUrl: "./share-result.page.html",
+  styleUrls: ["./share-result.page.scss"],
 })
 export class ShareResultPage implements OnInit {
-
-  Tokencolor=Tokencolor;
-  bag:Bag;
+  Tokencolor = Tokencolor;
+  bag: Bag;
 
   constructor(
-    private router : Router,
-    private route : ActivatedRoute
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
-  ngOnInit(){
-    this.route.queryParams
-      .pipe(
-        first()
-      )
-      .subscribe(params => {
-        console.log(params);
-        this.bag=new Bag({
-          Tokens:this.toByteArray(params.t).map(t=>t==0?new Token(Tokencolor.Black):new Token(Tokencolor.White)),
-          ExtractedToken:this.toByteArray(params.e).map(t=>t==0?new Token(Tokencolor.Black):new Token(Tokencolor.White)),
-          RiskExtractedToken:this.toByteArray(params.r).map(t=>t==0?new Token(Tokencolor.Black):new Token(Tokencolor.White)),
-        })
+  ngOnInit() {
+    this.route.queryParams.pipe(first()).subscribe((params) => {
+      console.log(params);
+      this.bag = new Bag({
+        Tokens: this.toByteArray(params.t).map((t) =>
+          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White),
+        ),
+        ExtractedToken: this.toByteArray(params.e).map((t) =>
+          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White),
+        ),
+        RiskExtractedToken: this.toByteArray(params.r).map((t) =>
+          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White),
+        ),
       });
-  }
-
-  Risk(){
-    this.bag.extractRiskTokens();
-  }
-
-  End(){
-    this.router.navigate(['/home'],{ queryParams: { refresh: true } });
-  }
-
-  doRefresh(event) {
-    this.router.navigate(['/home'],{ queryParams: { refresh: true } }).then(()=>{
-      event.target.complete();
     });
   }
 
+  Risk() {
+    this.bag.extractRiskTokens();
+  }
+
+  End() {
+    this.router.navigate(["/home"], { queryParams: { refresh: true } });
+  }
+
+  doRefresh(event) {
+    this.router
+      .navigate(["/home"], { queryParams: { refresh: true } })
+      .then(() => {
+        event.target.complete();
+      });
+  }
+
   toHexString(byteArray) {
-    return Array.prototype.map.call(byteArray, function(byte) {
-      return ('0' + (byte & 0xFF).toString(16)).slice(-2);
-    }).join('');
+    return Array.prototype.map
+      .call(byteArray, function (byte) {
+        return ("0" + (byte & 0xff).toString(16)).slice(-2);
+      })
+      .join("");
   }
   toByteArray(hexString) {
     var result = [];

@@ -1,24 +1,24 @@
-import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
-import { IonicModule } from '@ionic/angular';
+import { CommonModule } from "@angular/common";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { FormsModule } from "@angular/forms";
+import { RouterTestingModule } from "@angular/router/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { PrivacyPage } from './privacy.page';
+import { PrivacyPage } from "./privacy.page";
 
-describe('PrivacyPage', () => {
+describe("PrivacyPage", () => {
   let component: PrivacyPage;
   let fixture: ComponentFixture<PrivacyPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrivacyPage ],
+      declarations: [PrivacyPage],
       imports: [
         CommonModule,
         FormsModule,
         RouterTestingModule,
-        IonicModule.forRoot()
-      ]
+        IonicModule.forRoot(),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PrivacyPage);
@@ -26,7 +26,7 @@ describe('PrivacyPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

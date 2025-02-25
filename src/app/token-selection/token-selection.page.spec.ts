@@ -1,26 +1,26 @@
-import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { TokenSelectionPageRoutingModule } from './token-selection-routing.module';
-import { RouterTestingModule } from '@angular/router/testing';
+import { CommonModule } from "@angular/common";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { FormsModule } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
+import { TokenSelectionPageRoutingModule } from "./token-selection-routing.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
-import { TokenSelectionPage } from './token-selection.page';
+import { TokenSelectionPage } from "./token-selection.page";
 
-describe('TokenSelectionPage', () => {
+describe("TokenSelectionPage", () => {
   let component: TokenSelectionPage;
   let fixture: ComponentFixture<TokenSelectionPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TokenSelectionPage ],
+      declarations: [TokenSelectionPage],
       imports: [
         CommonModule,
         FormsModule,
         RouterTestingModule,
         TokenSelectionPageRoutingModule,
-        IonicModule.forRoot()
-      ]
+        IonicModule.forRoot(),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TokenSelectionPage);
@@ -28,7 +28,7 @@ describe('TokenSelectionPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

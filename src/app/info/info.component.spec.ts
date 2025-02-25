@@ -1,30 +1,28 @@
-import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';
-import { IonicModule, PopoverController } from '@ionic/angular';
+import { DebugElement } from "@angular/core";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { By } from "@angular/platform-browser";
+import { RouterTestingModule } from "@angular/router/testing";
+import { IonicModule, PopoverController } from "@ionic/angular";
 
-import { InfoComponent } from './info.component';
+import { InfoComponent } from "./info.component";
 
-describe('InfoComponent', () => {
+describe("InfoComponent", () => {
   let component: InfoComponent;
   let fixture: ComponentFixture<InfoComponent>;
   let element: DebugElement;
   let popoverController: jasmine.SpyObj<PopoverController>;
 
   beforeEach(waitForAsync(() => {
-    popoverController = jasmine.createSpyObj("PopoverController",{
-      dismiss : ()=>{}
-    })
+    popoverController = jasmine.createSpyObj("PopoverController", {
+      dismiss: () => {},
+    });
   }));
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfoComponent ],
-      imports: [IonicModule.forRoot(),RouterTestingModule],
-      providers:[
-        { provide: PopoverController , useValue: popoverController }
-      ]
+      declarations: [InfoComponent],
+      imports: [IonicModule.forRoot(), RouterTestingModule],
+      providers: [{ provide: PopoverController, useValue: popoverController }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(InfoComponent);
@@ -33,12 +31,14 @@ describe('InfoComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should close popover on close button', () => {
-    element.query(By.css('ion-button[slot="end"]')).triggerEventHandler("click",null);
+  it("should close popover on close button", () => {
+    element
+      .query(By.css('ion-button[slot="end"]'))
+      .triggerEventHandler("click", null);
 
     expect(popoverController.dismiss).toHaveBeenCalled();
   });
