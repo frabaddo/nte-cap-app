@@ -10,13 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { InfoComponent } from './info/info.component';
 
 @NgModule({
-  declarations: [AppComponent,InfoComponent],
-  entryComponents: [],
-  imports: [BrowserModule, BrowserAnimationsModule, IonicModule.forRoot({hardwareBackButton: false}), AppRoutingModule],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent],
-  exports:[InfoComponent]
+    declarations: [AppComponent, InfoComponent],
+    imports: [BrowserModule, BrowserAnimationsModule, IonicModule.forRoot({ hardwareBackButton: false }), AppRoutingModule],
+    providers: [
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ],
+    bootstrap: [AppComponent],
+    exports: [InfoComponent]
 })
 export class AppModule {}
