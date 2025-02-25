@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-text-center">
-  
+
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -16,7 +16,7 @@
     <ion-row style="height: 100%;">
       <ion-col>
         <div class="content">
-      
+
           <ion-grid class="ion-margin-top">
             <ion-row class="ion-justify-content-center">
               <ion-col size="4">
@@ -24,55 +24,61 @@
               </ion-col>
             </ion-row>
           </ion-grid>
-        
+
           <h2 class="extracted-label">
             ESTRATTI {{bag?.ExtractedToken.length+bag?.RiskExtractedToken.length}}/{{bag?.ExtractedToken.length+bag?.RiskExtractedToken.length+bag?.Tokens.length}}
           </h2>
-        
+
           <ion-grid class="ion-padding-horizontal">
             <ion-row class="ion-justify-content-center">
-              <ion-col size="3" *ngFor="let token of bag?.ExtractedToken; let first = first; let last=last" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
-                <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
-              </ion-col>
+              @for (token of bag?.ExtractedToken; track token; let first = $first; let last = $last) {
+                <ion-col size="3" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
+                  <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
+                </ion-col>
+              }
             </ion-row>
           </ion-grid>
-          
-          <ion-grid class="ion-padding-horizontal" *ngIf="bag?.yetExtrctedRisk">
-            <ion-row class="ion-justify-content-center">
-              <ion-col size="3" *ngFor="let token of bag?.RiskExtractedToken; let first = first; let last=last" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
-                <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-      
-          <!--<ion-grid class="ion-margin-top">
-            <ion-row class="ion-justify-content-center">
-              <ion-col>
-                <ion-button (click)="End()">
-                  Inizia
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>-->
-      
-          <div class="push"></div>
-        </div>
-      
-        <ion-grid class="ion-margin-top">
-          <ion-row>
-            <ion-col class="made-by">
-              <p>Made with love by</p>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col class="logo">
-              <img [src]="'../../assets/LogoNero.svg'">
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-  
+          @if (bag?.yetExtrctedRisk) {
+            <ion-grid class="ion-padding-horizontal">
+              <ion-row class="ion-justify-content-center">
+                @for (token of bag?.RiskExtractedToken; track token; let first = $first; let last = $last) {
+                  <ion-col size="3" class="extracted-token" [class.first-token]="first" [class.last-token]="last">
+                    <img [src]="'../../assets/Token'+(token.Color==Tokencolor.Black?'Nero':'Bianco')+'Piccolo.png'">
+                  </ion-col>
+                }
+              </ion-row>
+            </ion-grid>
+          }
+
+          <!--<ion-grid class="ion-margin-top">
+          <ion-row class="ion-justify-content-center">
+            <ion-col>
+              <ion-button (click)="End()">
+                Inizia
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>-->
+
+        <div class="push"></div>
+      </div>
+
+      <ion-grid class="ion-margin-top">
+        <ion-row>
+          <ion-col class="made-by">
+            <p>Made with love by</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="logo">
+            <img [src]="'../../assets/LogoNero.svg'">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
 </ion-content>

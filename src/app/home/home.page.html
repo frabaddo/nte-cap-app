@@ -6,11 +6,11 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-text-center">
-  
+
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  
+
   <ion-grid fixed class="ion-no-padding" style="height: 100%;">
     <ion-row style="height: 100%;">
       <ion-col>
@@ -46,7 +46,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      
+
         <div class="select-token">
           <div style="font-size: 18px;" class="title-container">
             <p class="grid-title">SACCHETTO</p>
@@ -69,24 +69,26 @@
               </ion-col>
             </ion-row>
           </ion-grid>
-          <ion-grid id="confusion-tokens" *ngIf="confusion" @enter>
-            <ion-row class="ion-align-items-center">
-              <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="medium" size="small" (click)="decrement(2)">
-                  <ion-icon name="remove"></ion-icon>
-                </ion-fab-button>
-              </ion-col>
-              <ion-col size="6" style="margin-top: 5px;">
-                <img src="../../assets/TokenBiancoConfusione.png">
-                <ion-input class="token-number bianco" inputmode="numeric" [(ngModel)]="confusionToExtract"></ion-input>
-              </ion-col>
-              <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="medium" size="small" (click)="increment(2)">
-                  <ion-icon name="add"></ion-icon>
-                </ion-fab-button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+          @if (confusion) {
+            <ion-grid id="confusion-tokens" @enter>
+              <ion-row class="ion-align-items-center">
+                <ion-col size="3" class="ion-text-center">
+                  <ion-fab-button color="medium" size="small" (click)="decrement(2)">
+                    <ion-icon name="remove"></ion-icon>
+                  </ion-fab-button>
+                </ion-col>
+                <ion-col size="6" style="margin-top: 5px;">
+                  <img src="../../assets/TokenBiancoConfusione.png">
+                  <ion-input class="token-number bianco" inputmode="numeric" [(ngModel)]="confusionToExtract"></ion-input>
+                </ion-col>
+                <ion-col size="3" class="ion-text-center">
+                  <ion-fab-button color="medium" size="small" (click)="increment(2)">
+                    <ion-icon name="add"></ion-icon>
+                  </ion-fab-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          }
           <ion-grid id="black-tokens">
             <ion-row class="ion-align-items-center">
               <ion-col size="3" class="ion-text-center">
@@ -106,7 +108,7 @@
             </ion-row>
           </ion-grid>
         </div>
-      
+
         <ion-button class="ion-margin-bottom big-button" [disabled]="!((this.whiteToExtract>0&&this.blackToExtract>0)||(this.confusion&&this.confusionToExtract>0&&this.blackToExtract>0))" (click)="preparebag()">
           {{adrenalin?"Estrai":"Avanti"}}
         </ion-button>
