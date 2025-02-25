@@ -6,9 +6,10 @@ import { first } from "rxjs/operators";
 import { Token } from "../token";
 
 @Component({
-  selector: "app-share-result",
-  templateUrl: "./share-result.page.html",
-  styleUrls: ["./share-result.page.scss"],
+    selector: "app-share-result",
+    templateUrl: "./share-result.page.html",
+    styleUrls: ["./share-result.page.scss"],
+    standalone: false
 })
 export class ShareResultPage implements OnInit {
   Tokencolor = Tokencolor;

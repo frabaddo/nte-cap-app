@@ -3,9 +3,10 @@ import { BagService } from "../bag.service";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-token-selection",
-  templateUrl: "./token-selection.page.html",
-  styleUrls: ["./token-selection.page.scss"],
+    selector: "app-token-selection",
+    templateUrl: "./token-selection.page.html",
+    styleUrls: ["./token-selection.page.scss"],
+    standalone: false
 })
 export class TokenSelectionPage {
   tokenToExtract = 0;

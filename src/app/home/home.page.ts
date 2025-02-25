@@ -4,20 +4,21 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { trigger, style, animate, transition } from "@angular/animations";
 
 @Component({
-  selector: "app-home",
-  templateUrl: "home.page.html",
-  styleUrls: ["home.page.scss"],
-  animations: [
-    trigger("enter", [
-      transition(":enter", [
-        style({ opacity: 0, transform: "scale(0)" }),
-        animate("250ms", style({ opacity: 1, transform: "scale(1)" })),
-      ]),
-      transition(":leave", [
-        animate("250ms", style({ opacity: 0, transform: "scale(0)" })),
-      ]),
-    ]),
-  ],
+    selector: "app-home",
+    templateUrl: "home.page.html",
+    styleUrls: ["home.page.scss"],
+    animations: [
+        trigger("enter", [
+            transition(":enter", [
+                style({ opacity: 0, transform: "scale(0)" }),
+                animate("250ms", style({ opacity: 1, transform: "scale(1)" })),
+            ]),
+            transition(":leave", [
+                animate("250ms", style({ opacity: 0, transform: "scale(0)" })),
+            ]),
+        ]),
+    ],
+    standalone: false
 })
 export class HomePage implements OnInit {
   whiteToExtract = 1;

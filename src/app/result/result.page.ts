@@ -6,9 +6,10 @@ import { Plugins } from "@capacitor/core";
 const { Share } = Plugins;
 
 @Component({
-  selector: "app-result",
-  templateUrl: "./result.page.html",
-  styleUrls: ["./result.page.scss"],
+    selector: "app-result",
+    templateUrl: "./result.page.html",
+    styleUrls: ["./result.page.scss"],
+    standalone: false
 })
 export class ResultPage {
   Tokencolor = Tokencolor;

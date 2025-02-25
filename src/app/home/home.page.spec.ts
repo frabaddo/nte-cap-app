@@ -15,7 +15,9 @@ import { BagService } from "../bag.service";
 
 import { HomePage } from "./home.page";
 
-@Component({})
+@Component({
+    standalone: false
+})
 class FakePage {}
 
 describe("HomePage", () => {
