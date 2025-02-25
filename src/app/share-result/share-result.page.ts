@@ -4,34 +4,34 @@ import { Tokencolor } from "../tokencolor.enum";
 import { Bag } from "../bag";
 import { first } from "rxjs/operators";
 import { Token } from "../token";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
 
 @Component({
-    selector: "app-share-result",
-    templateUrl: "./share-result.page.html",
-    styleUrls: ["./share-result.page.scss"],
-    standalone: false
+  selector: "app-share-result",
+  templateUrl: "./share-result.page.html",
+  styleUrls: ["./share-result.page.scss"],
+  imports: [CommonModule, FormsModule, IonicModule],
 })
 export class ShareResultPage implements OnInit {
   Tokencolor = Tokencolor;
   bag: Bag;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.queryParams.pipe(first()).subscribe((params) => {
       console.log(params);
       this.bag = new Bag({
         Tokens: this.toByteArray(params.t).map((t) =>
-          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White),
+          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White)
         ),
         ExtractedToken: this.toByteArray(params.e).map((t) =>
-          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White),
+          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White)
         ),
         RiskExtractedToken: this.toByteArray(params.r).map((t) =>
-          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White),
+          t == 0 ? new Token(Tokencolor.Black) : new Token(Tokencolor.White)
         ),
       });
     });

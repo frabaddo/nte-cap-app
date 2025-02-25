@@ -25,8 +25,8 @@
     "@capacitor/cli": "~2.1.0",
     "@capacitor/core": "~2.1.0",
     "@capacitor/ios": "~2.1.0",
-    "@ionic/angular": "^6.7.5",
-    "rxjs": "~7.4.0",
+    "@ionic/angular": "^8.4.3",
+    "rxjs": "^7.4.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {

@@ -4,8 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
   {
     path: "home",
-    loadChildren: () =>
-      import("./home/home.module").then((m) => m.HomePageModule),
+    loadComponent: () =>
+      import("./home/home.page").then((m) => m.HomePage),
   },
   {
     path: "",
@@ -14,35 +14,33 @@ const routes: Routes = [
   },
   {
     path: "result",
-    loadChildren: () =>
-      import("./result/result.module").then((m) => m.ResultPageModule),
+    loadComponent: () =>
+      import("./result/result.page").then((m) => m.ResultPage),
   },
   {
     path: "token-selection",
-    loadChildren: () =>
-      import("./token-selection/token-selection.module").then(
-        (m) => m.TokenSelectionPageModule,
+    loadComponent: () =>
+      import("./token-selection/token-selection.page").then(
+        (m) => m.TokenSelectionPage,
       ),
   },
   {
     path: "share-result",
-    loadChildren: () =>
-      import("./share-result/share-result.module").then(
-        (m) => m.ShareResultPageModule,
+    loadComponent: () =>
+      import("./share-result/share-result.page").then(
+        (m) => m.ShareResultPage,
       ),
   },
   {
     path: "privacy",
-    loadChildren: () =>
-      import("./privacy/privacy.module").then((m) => m.PrivacyPageModule),
+    loadComponent: () =>
+      import("./privacy/privacy.page").then((m) => m.PrivacyPage),
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules
-    }),
+    RouterModule.forRoot(routes),
   ],
   exports: [RouterModule],
 })

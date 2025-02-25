@@ -2,23 +2,26 @@ import { Component, OnInit } from "@angular/core";
 import { BagService } from "../bag.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { trigger, style, animate, transition } from "@angular/animations";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
 
 @Component({
-    selector: "app-home",
-    templateUrl: "home.page.html",
-    styleUrls: ["home.page.scss"],
-    animations: [
-        trigger("enter", [
-            transition(":enter", [
-                style({ opacity: 0, transform: "scale(0)" }),
-                animate("250ms", style({ opacity: 1, transform: "scale(1)" })),
-            ]),
-            transition(":leave", [
-                animate("250ms", style({ opacity: 0, transform: "scale(0)" })),
-            ]),
-        ]),
-    ],
-    standalone: false
+  selector: "app-home",
+  templateUrl: "home.page.html",
+  styleUrls: ["home.page.scss"],
+  animations: [
+    trigger("enter", [
+      transition(":enter", [
+        style({ opacity: 0, transform: "scale(0)" }),
+        animate("250ms", style({ opacity: 1, transform: "scale(1)" })),
+      ]),
+      transition(":leave", [
+        animate("250ms", style({ opacity: 0, transform: "scale(0)" })),
+      ]),
+    ]),
+  ],
+  imports: [CommonModule, FormsModule, IonicModule],
 })
 export class HomePage implements OnInit {
   whiteToExtract = 1;
@@ -34,7 +37,7 @@ export class HomePage implements OnInit {
   constructor(
     public bag: BagService,
     private router: Router,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -72,7 +75,7 @@ export class HomePage implements OnInit {
         this.whiteToExtract,
         this.blackToExtract,
         this.confusionToExtract,
-        this.confusion,
+        this.confusion
       );
       if (this.adrenalin) {
         this.bag.extractTokens(4);

@@ -3,13 +3,16 @@ import { BagService } from "../bag.service";
 import { Router } from "@angular/router";
 import { Tokencolor } from "../tokencolor.enum";
 import { Plugins } from "@capacitor/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
 const { Share } = Plugins;
 
 @Component({
     selector: "app-result",
     templateUrl: "./result.page.html",
     styleUrls: ["./result.page.scss"],
-    standalone: false
+    imports: [CommonModule, FormsModule, IonicModule]
 })
 export class ResultPage {
   Tokencolor = Tokencolor;
