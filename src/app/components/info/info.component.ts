@@ -1,10 +1,13 @@
+import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { PopoverController } from "@ionic/angular";
+import { FormsModule } from "@angular/forms";
+import { IonicModule, PopoverController } from "@ionic/angular";
 
 @Component({
     selector: "app-info",
     templateUrl: "./info.component.html",
-    styleUrls: ["./info.component.scss"]
+    styleUrls: ["./info.component.scss"],
+    imports: [CommonModule, FormsModule, IonicModule]
 })
 export class InfoComponent {
   constructor(private popover: PopoverController) {}
