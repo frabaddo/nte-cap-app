@@ -11,7 +11,7 @@ import { By } from "@angular/platform-browser";
 import { Router, Routes } from "@angular/router";
 import { RouterTestingModule } from "@angular/router/testing";
 import { IonicModule } from "@ionic/angular";
-import { BagService } from "../bag.service";
+import { BagService } from "../../bag.service";
 
 import { HomePage } from "./home.page";
 

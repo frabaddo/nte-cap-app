@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { BagService } from "../bag.service";
+import { BagService } from "../../bag.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { trigger, style, animate, transition } from "@angular/animations";
 import { CommonModule } from "@angular/common";

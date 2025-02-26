@@ -7,10 +7,9 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { InfoComponent } from "./info/info.component";
 
 @NgModule({
-  declarations: [AppComponent, InfoComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -19,6 +18,5 @@ import { InfoComponent } from "./info/info.component";
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
-  exports: [InfoComponent],
 })
 export class AppModule {}

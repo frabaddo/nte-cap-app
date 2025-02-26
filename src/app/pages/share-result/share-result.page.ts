@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Tokencolor } from "../tokencolor.enum";
-import { Bag } from "../bag";
+import { Tokencolor } from "../../tokencolor.enum";
+import { Bag } from "../../bag";
 import { first } from "rxjs/operators";
-import { Token } from "../token";
+import { Token } from "../../token";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";

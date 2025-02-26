@@ -21,31 +21,31 @@ const routes: Routes = [
           {
             path: "home",
             loadComponent: () =>
-              import("./home/home.page").then((m) => m.HomePage),
+              import("./pages/home/home.page").then((m) => m.HomePage),
           },
           {
             path: "result",
             loadComponent: () =>
-              import("./result/result.page").then((m) => m.ResultPage),
+              import("./pages/result/result.page").then((m) => m.ResultPage),
           },
           {
             path: "token-selection",
             loadComponent: () =>
-              import("./token-selection/token-selection.page").then(
+              import("./pages/token-selection/token-selection.page").then(
                 (m) => m.TokenSelectionPage,
               ),
           },
           {
             path: "share-result",
             loadComponent: () =>
-              import("./share-result/share-result.page").then(
+              import("./pages/share-result/share-result.page").then(
                 (m) => m.ShareResultPage,
               ),
           },
           {
             path: "privacy",
             loadComponent: () =>
-              import("./privacy/privacy.page").then((m) => m.PrivacyPage),
+              import("./pages/privacy/privacy.page").then((m) => m.PrivacyPage),
           },
         ]
       },

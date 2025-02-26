@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 
 import { Plugins, StatusBarStyle } from "@capacitor/core";
 import { PopoverController } from "@ionic/angular";
-import { InfoComponent } from "./info/info.component";
+import { InfoComponent } from "./components/info/info.component";
 const { SplashScreen, StatusBar, App } = Plugins;
 
 @Component({

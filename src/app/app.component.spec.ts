@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from "./app.component";
-import { InfoComponent } from "./info/info.component";
+import { InfoComponent } from "./components/info/info.component";
 
 describe("AppComponent", () => {
   beforeEach(waitForAsync(() => {

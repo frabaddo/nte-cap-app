@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { BagService } from "../bag.service";
+import { BagService } from "../../bag.service";
 import { Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";

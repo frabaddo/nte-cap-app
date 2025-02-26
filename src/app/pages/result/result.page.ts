@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { BagService } from "../bag.service";
+import { BagService } from "../../bag.service";
 import { Router } from "@angular/router";
-import { Tokencolor } from "../tokencolor.enum";
+import { Tokencolor } from "../../tokencolor.enum";
 import { Plugins } from "@capacitor/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
