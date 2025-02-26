@@ -19,18 +19,18 @@ export class TokenSelectionPage {
   Extract() {
     if (this.tokenToExtract > 0) {
       this.bag.extractTokens(this.tokenToExtract);
-      this.router.navigate(["/result"]);
+      this.router.navigate(["/bag", "result"]);
     }
   }
 
   goBack() {
     this.bag.cleanBag();
-    this.router.navigate(["/home"]);
+    this.router.navigate(["/bag", "home"]);
   }
 
   doRefresh(event) {
     this.router
-      .navigate(["/home"], { queryParams: { refresh: true } })
+      .navigate(["/bag", "home"], { queryParams: { refresh: true } })
       .then(() => {
         this.bag.cleanBag();
         event.target.complete();

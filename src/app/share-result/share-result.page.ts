@@ -42,12 +42,12 @@ export class ShareResultPage implements OnInit {
   }
 
   End() {
-    this.router.navigate(["/home"], { queryParams: { refresh: true } });
+    this.router.navigate(["/bag", "home"], { queryParams: { refresh: true } });
   }
 
   doRefresh(event) {
     this.router
-      .navigate(["/home"], { queryParams: { refresh: true } })
+      .navigate(["/bag", "home"], { queryParams: { refresh: true } })
       .then(() => {
         event.target.complete();
       });

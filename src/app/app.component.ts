@@ -28,7 +28,7 @@ export class AppComponent {
     App.addListener("backButton", () => {
       if (this.router.url == "/" || this.router.url.includes("/home"))
         App.exitApp();
-      else this.router.navigate(["/home"], { queryParams: { refresh: true } });
+      else this.router.navigate(["/bag", "home"], { queryParams: { refresh: true } });
     });
   }
 

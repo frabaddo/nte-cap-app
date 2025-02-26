@@ -193,7 +193,7 @@ describe("HomePage", () => {
     component.preparebag();
     tick();
 
-    router.navigate([""], { queryParams: { refresh: true } });
+    router.navigate(["bag"], { queryParams: { refresh: true } });
     tick();
     component.ionViewWillEnter();
     tick();

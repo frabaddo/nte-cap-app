@@ -42,7 +42,7 @@ export class ResultPage {
       title: "Token Estratti",
       text: "",
       url:
-        "https://not-the-end.web.app/share-result?t=" +
+        "https://not-the-end.web.app/bag/share-result?t=" +
         this.toHexString(tokens) +
         "&e=" +
         this.toHexString(extracted) +
@@ -58,7 +58,7 @@ export class ResultPage {
 
   End() {
     this.router
-      .navigate(["/home"], { queryParams: { refresh: true } })
+      .navigate(["/bag", "home"], { queryParams: { refresh: true } })
       .then(() => {
         this.bag.cleanBag();
       });
@@ -66,7 +66,7 @@ export class ResultPage {
 
   doRefresh(event) {
     this.router
-      .navigate(["/home"], { queryParams: { refresh: true } })
+      .navigate(["/bag", "home"], { queryParams: { refresh: true } })
       .then(() => {
         this.bag.cleanBag();
         event.target.complete();

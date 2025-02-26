@@ -49,7 +49,7 @@ export class HomePage implements OnInit {
         this.confusion = false;
         this.adrenalin = false;
       } else if (params.share) {
-        this.router.navigate(["/share-result"], {
+        this.router.navigate(["/bag", "share-result"], {
           queryParams: {
             tokens: params.tokens,
             extracted: params.extracted,
@@ -79,8 +79,8 @@ export class HomePage implements OnInit {
       );
       if (this.adrenalin) {
         this.bag.extractTokens(4);
-        this.router.navigate(["/result"]);
-      } else this.router.navigate(["/token-selection"]);
+        this.router.navigate(["/bag", "result"]);
+      } else this.router.navigate(["/bag", "token-selection"]);
     }
   }
 
