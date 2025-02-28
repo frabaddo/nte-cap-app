@@ -1,1 +1,17 @@
-<ng-content></ng-content>
+<ion-popover [isOpen]="isOpen() && (icon() || text())" [showBackdrop]="false">
+  <ng-template>
+    <div>
+      @if(icon()){
+      <h2 class="ion-text-center">
+        <ion-icon [name]="icon"></ion-icon>
+      </h2>
+      }
+      <p>
+        {{ text() }}
+      </p>
+    </div>
+  </ng-template>
+</ion-popover>
+@if(icon()){
+<ion-icon name="pencil"></ion-icon>
+}

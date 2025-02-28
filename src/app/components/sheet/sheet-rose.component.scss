@@ -22,6 +22,7 @@
   align-items: center;
   overflow: hidden;
   position: relative;
+  user-select: none;
 }
 
 .exagon > .inner {

@@ -1,9 +1,12 @@
 @for ( _row of sheet(); let row = $index; track $index) {
 <div class="row">
-  @for ( _cel of _row; let cel = $index; track $index) {
-  <div class="exagon">
+  @let modalX = openedModal()?.[0]; @let modalY = openedModal()?.[1]; @for (
+  _cel of _row; let cel = $index; track $index) {
+  <div class="exagon" [attr.data-col]="cel" [attr.data-row]="row">
     <div class="inner">
-      <app-sheet-rose-exagon> {{ row }}-{{ cel }} </app-sheet-rose-exagon>
+      <app-sheet-rose-exagon [isOpen]="modalX === row && modalY === cel">
+        {{ row }}-{{ cel }}
+      </app-sheet-rose-exagon>
     </div>
   </div>
   }

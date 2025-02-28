@@ -6,3 +6,11 @@
   justify-content: center;
   align-items: center;
 }
+:host.active {
+  background: gray;
+}
+
+ion-popover::part(content) {
+  top: unset;
+  bottom: 1%;
+}
