@@ -1,89 +1,91 @@
-ion-content{
-    --padding-top: 100px;
-    --background:var(--main-background) no-repeat center center / cover;
+ion-content {
+  --padding-bottom: 32px;
+  --padding-top: 100px;
+  --background: var(--main-background) no-repeat center center / cover;
 }
-ion-header ion-toolbar{
-    --background:url("../../../assets/Header.png") no-repeat center center / cover;
-    opacity: 0;
+ion-header ion-toolbar {
+  --background: url("../../../assets/Header.png") no-repeat center center /
+    cover;
+  opacity: 0;
 }
-ion-header::after{
-    background: none;
+ion-header::after {
+  background: none;
 }
-ion-item{
-    --background: transparent;
+ion-item {
+  --background: transparent;
 }
-ion-fab-button{
-    --ion-color-contrast: black!important;
-    font-size: 24px;
-    font-weight: 400;
-    margin: auto;
+ion-fab-button {
+  --ion-color-contrast: black !important;
+  font-size: 24px;
+  font-weight: 400;
+  margin: auto;
 }
 .selected {
-    border: 2px solid var(--ion-color-primary);
-    border-radius: 50px;
-    padding: 2px;
-    --ion-color-contrast: var(--ion-color-primary)!important;
+  border: 2px solid var(--ion-color-primary);
+  border-radius: 50px;
+  padding: 2px;
+  --ion-color-contrast: var(--ion-color-primary) !important;
 }
 
-.action-grid{
-    padding-bottom: 16px;
-    //border-bottom: 2px solid var(--ion-color-medium);
-    ion-button{
-        max-width: 300px;
-        margin: auto;
-    }
+.action-grid {
+  padding-bottom: 16px;
+  //border-bottom: 2px solid var(--ion-color-medium);
+  ion-button {
+    max-width: 300px;
+    margin: auto;
+  }
 }
 .action-grid::after {
-    content: "";
-    height: 2px;
-    position: absolute;
-    width: 1000%;
-    background: var(--ion-color-medium);
-    transform: translateX(-50%);
-    margin-top: 40px;
+  content: "";
+  height: 2px;
+  position: absolute;
+  width: 1000%;
+  background: var(--ion-color-medium);
+  transform: translateX(-50%);
+  margin-top: 40px;
 }
 
-.number-grid{
-    position: relative;
-    padding-top: 48px;
-    //border-top: 2px solid var(--ion-color-medium);
+.number-grid {
+  position: relative;
+  padding-top: 48px;
+  //border-top: 2px solid var(--ion-color-medium);
 }
 
-.grid-title{
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    margin: 0px;
-    transform: translate(-50%, -50%);
-    padding: 0px 8px;
-    white-space: nowrap;
+.grid-title {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  margin: 0px;
+  transform: translate(-50%, -50%);
+  padding: 0px 8px;
+  white-space: nowrap;
 }
 .grid-title::after {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 1000%;
-    top: 50%;
-    background: var(--ion-color-medium);
-    transform: translate(8px, -50%);
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 1000%;
+  top: 50%;
+  background: var(--ion-color-medium);
+  transform: translate(8px, -50%);
 }
 .grid-title::before {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 1000%;
-    top: 50%;
-    left: -1000%;
-    background: var(--ion-color-medium);
-    transform: translate(0px, -50%);
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 1000%;
+  top: 50%;
+  left: -1000%;
+  background: var(--ion-color-medium);
+  transform: translate(0px, -50%);
 }
 
-.big-button{
-    font-size: 20px;
-    height: 40px;
-    //--padding-bottom: 20px;
-    //--padding-top: 20px;
+.big-button {
+  font-size: 20px;
+  height: 40px;
+  //--padding-bottom: 20px;
+  //--padding-top: 20px;
 }
-.grey{
-    --border-color: var(--ion-color-medium);
+.grey {
+  --border-color: var(--ion-color-medium);
 }

@@ -1,33 +1,35 @@
-ion-content{
+ion-content {
   --padding-top: 32px;
-  --background:var(--main-background) no-repeat center center / cover;
+  --padding-bottom: 32px;
+  --background: var(--main-background) no-repeat center center / cover;
 }
-ion-header{
-  ion-toolbar{
-    --background:url("../../../assets/Header.png") no-repeat center center / cover;
+ion-header {
+  ion-toolbar {
+    --background: url("../../../assets/Header.png") no-repeat center center /
+      cover;
     opacity: 0;
   }
-} 
-ion-header::after{
+}
+ion-header::after {
   background: none;
 }
-ion-item{
+ion-item {
   --background: transparent;
 }
-.grid-separator::after{
-    content: "";
-    height: 90%;
-    width: 2px;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    background: var(--ion-color-medium);
+.grid-separator::after {
+  content: "";
+  height: 90%;
+  width: 2px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background: var(--ion-color-medium);
 }
 
-.grid-element-equal-margin{
+.grid-element-equal-margin {
   margin: 4px auto;
 }
-.ion-text-center ion-fab-button{
+.ion-text-center ion-fab-button {
   margin: auto;
 }
 
@@ -38,9 +40,9 @@ ion-item{
   padding-top: 8px;
   border: 2px solid var(--ion-color-medium);
   border-top: 0px;
-  img{
-    -webkit-filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.3));
-    filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.3));
+  img {
+    -webkit-filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.3));
   }
 }
 
@@ -53,14 +55,14 @@ ion-item{
   --padding-start: 16px;
   --padding-end: 16px;
 }
-.token-number.nero{
-  color:var(--ion-color-light);
+.token-number.nero {
+  color: var(--ion-color-light);
 }
-.token-number.bianco{
-  color:var(--ion-color-dark);
+.token-number.bianco {
+  color: var(--ion-color-dark);
 }
 
-.grid-title{
+.grid-title {
   position: absolute;
   top: 0px;
   left: 50%;
@@ -73,7 +75,7 @@ ion-item{
   content: "";
   position: absolute;
   height: 2px;
-  width: calc( 50% - calc(6em / 2) );
+  width: calc(50% - calc(6em / 2));
   top: 50%;
   right: 0px;
   background: var(--ion-color-medium);
@@ -83,14 +85,14 @@ ion-item{
   content: "";
   position: absolute;
   height: 2px;
-  width: calc( 50% - calc(6em / 2) );
+  width: calc(50% - calc(6em / 2));
   top: 50%;
   left: 0%;
   background: var(--ion-color-medium);
   transform: translate(0px, -50%);
 }
 
-.title-container{
+.title-container {
   width: 100%;
   position: absolute;
   top: 0px;
@@ -99,7 +101,7 @@ ion-item{
   transform: translate(0px, -14px);
 }
 
-.big-button{
+.big-button {
   font-size: 20px;
   height: 40px;
   //--padding-bottom: 20px;
