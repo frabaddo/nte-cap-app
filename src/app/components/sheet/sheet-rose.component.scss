@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --size: calc((100vw - 2rem) / 4);
+  gap: calc(var(--size) * 0.94);
+}
+.exagon {
+  width: var(--size);
+  margin: calc(var(--size) * -0.3 / 1.35);
+  background: gray;
+  clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+  aspect-ratio: 1 / cos(30deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.exagon > .inner {
+  --size: calc(var(--size) -1px);
+  position: absolute;
+  content: "";
+  top: 2px;
+  right: 1px;
+  bottom: 2px;
+  left: 2px;
+  width: var(--size);
+  background: white;
+  clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}

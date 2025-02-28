@@ -1,18 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color="light" mode="md">
-      NOT THE END
-    </ion-title>
+    <ion-title color="light" mode="md"> NOT THE END </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-text-center">
-
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-grid fixed class="ion-no-padding" style="height: 100%;">
-    <ion-row style="height: 100%;">
+  <ion-grid fixed class="ion-no-padding" style="height: 100%">
+    <ion-row style="height: 100%">
       <ion-col>
         <ion-grid>
           <ion-row>
@@ -20,12 +17,22 @@
               <ion-grid>
                 <ion-row>
                   <ion-col class="ion-text-center">
-                    <p style="font-size: 18px;" class="grid-element-equal-margin">ADRENALINA</p>
+                    <p
+                      style="font-size: 18px"
+                      class="grid-element-equal-margin"
+                    >
+                      ADRENALINA
+                    </p>
                   </ion-col>
                 </ion-row>
                 <ion-row>
                   <ion-col class="ion-text-center">
-                    <ion-checkbox style="--size: 22px;" mode="md" class="grid-element-equal-margin adrenalin-checkbox" [(ngModel)]="adrenalin"></ion-checkbox>
+                    <ion-checkbox
+                      style="--size: 22px"
+                      mode="md"
+                      class="grid-element-equal-margin adrenalin-checkbox"
+                      [(ngModel)]="adrenalin"
+                    ></ion-checkbox>
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -34,12 +41,22 @@
               <ion-grid>
                 <ion-row>
                   <ion-col class="ion-text-center">
-                    <p style="font-size: 18px;" class="grid-element-equal-margin">CONFUSIONE</p>
+                    <p
+                      style="font-size: 18px"
+                      class="grid-element-equal-margin"
+                    >
+                      CONFUSIONE
+                    </p>
                   </ion-col>
                 </ion-row>
                 <ion-row>
                   <ion-col class="ion-text-center">
-                    <ion-checkbox style="--size: 22px;" mode="md" class="grid-element-equal-margin confusion-checkbox" [(ngModel)]="confusion"></ion-checkbox>
+                    <ion-checkbox
+                      style="--size: 22px"
+                      mode="md"
+                      class="grid-element-equal-margin confusion-checkbox"
+                      [(ngModel)]="confusion"
+                    ></ion-checkbox>
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -48,60 +65,96 @@
         </ion-grid>
 
         <div class="select-token">
-          <div style="font-size: 18px;" class="title-container">
+          <div style="font-size: 18px" class="title-container">
             <p class="grid-title">SACCHETTO</p>
           </div>
           <ion-grid id="white-tokens">
             <ion-row class="ion-align-items-center">
               <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="ligth" size="small" (click)="decrement(0)">
+                <ion-fab-button
+                  color="ligth"
+                  size="small"
+                  (click)="decrement(0)"
+                >
                   <ion-icon name="remove"></ion-icon>
                 </ion-fab-button>
               </ion-col>
-              <ion-col size="6" style="margin-top: 5px;">
-                <img src="../../assets/TokenBianco.png">
-                <ion-input class="token-number bianco" inputmode="numeric" [(ngModel)]="whiteToExtract"></ion-input>
+              <ion-col size="6" style="margin-top: 5px">
+                <img src="../../assets/TokenBianco.png" />
+                <ion-input
+                  class="token-number bianco"
+                  inputmode="numeric"
+                  [(ngModel)]="whiteToExtract"
+                ></ion-input>
               </ion-col>
               <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="ligth" size="small" (click)="increment(0)">
+                <ion-fab-button
+                  color="ligth"
+                  size="small"
+                  (click)="increment(0)"
+                >
                   <ion-icon name="add"></ion-icon>
                 </ion-fab-button>
               </ion-col>
             </ion-row>
           </ion-grid>
           @if (confusion) {
-            <ion-grid id="confusion-tokens" @enter>
-              <ion-row class="ion-align-items-center">
-                <ion-col size="3" class="ion-text-center">
-                  <ion-fab-button color="medium" size="small" (click)="decrement(2)">
-                    <ion-icon name="remove"></ion-icon>
-                  </ion-fab-button>
-                </ion-col>
-                <ion-col size="6" style="margin-top: 5px;">
-                  <img src="../../assets/TokenBiancoConfusione.png">
-                  <ion-input class="token-number bianco" inputmode="numeric" [(ngModel)]="confusionToExtract"></ion-input>
-                </ion-col>
-                <ion-col size="3" class="ion-text-center">
-                  <ion-fab-button color="medium" size="small" (click)="increment(2)">
-                    <ion-icon name="add"></ion-icon>
-                  </ion-fab-button>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
+          <ion-grid id="confusion-tokens" @enter>
+            <ion-row class="ion-align-items-center">
+              <ion-col size="3" class="ion-text-center">
+                <ion-fab-button
+                  color="medium"
+                  size="small"
+                  (click)="decrement(2)"
+                >
+                  <ion-icon name="remove"></ion-icon>
+                </ion-fab-button>
+              </ion-col>
+              <ion-col size="6" style="margin-top: 5px">
+                <img src="../../assets/TokenBiancoConfusione.png" />
+                <ion-input
+                  class="token-number bianco"
+                  inputmode="numeric"
+                  [(ngModel)]="confusionToExtract"
+                ></ion-input>
+              </ion-col>
+              <ion-col size="3" class="ion-text-center">
+                <ion-fab-button
+                  color="medium"
+                  size="small"
+                  (click)="increment(2)"
+                >
+                  <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
           }
           <ion-grid id="black-tokens">
             <ion-row class="ion-align-items-center">
               <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="dark" size="small" (click)="decrement(1)">
+                <ion-fab-button
+                  color="dark"
+                  size="small"
+                  (click)="decrement(1)"
+                >
                   <ion-icon name="remove"></ion-icon>
                 </ion-fab-button>
               </ion-col>
-              <ion-col size="6" style="margin-top: 5px;">
-                <img src="../../assets/TokenNero.png">
-                <ion-input class="token-number nero" inputmode="numeric" [(ngModel)]="blackToExtract"></ion-input>
+              <ion-col size="6" style="margin-top: 5px">
+                <img src="../../assets/TokenNero.png" />
+                <ion-input
+                  class="token-number nero"
+                  inputmode="numeric"
+                  [(ngModel)]="blackToExtract"
+                ></ion-input>
               </ion-col>
               <ion-col size="3" class="ion-text-center">
-                <ion-fab-button color="dark" size="small" (click)="increment(1)">
+                <ion-fab-button
+                  color="dark"
+                  size="small"
+                  (click)="increment(1)"
+                >
                   <ion-icon name="add"></ion-icon>
                 </ion-fab-button>
               </ion-col>
@@ -109,11 +162,14 @@
           </ion-grid>
         </div>
 
-        <ion-button class="ion-margin-bottom big-button" [disabled]="!((this.whiteToExtract>0&&this.blackToExtract>0)||(this.confusion&&this.confusionToExtract>0&&this.blackToExtract>0))" (click)="preparebag()">
+        <ion-button
+          class="ion-margin-bottom big-button"
+          [disabled]="!((this.whiteToExtract>0&&this.blackToExtract>0)||(this.confusion&&this.confusionToExtract>0&&this.blackToExtract>0))"
+          (click)="preparebag()"
+        >
           {{adrenalin?"Estrai":"Avanti"}}
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>

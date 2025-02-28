@@ -4,6 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
   {
     path: "",
+    loadComponent: () =>
+      import("./components/tabs/tabs.component").then((m) => m.TabsComponent),
     children: [
       {
         path: "",
@@ -32,14 +34,14 @@ const routes: Routes = [
             path: "token-selection",
             loadComponent: () =>
               import("./pages/token-selection/token-selection.page").then(
-                (m) => m.TokenSelectionPage,
+                (m) => m.TokenSelectionPage
               ),
           },
           {
             path: "share-result",
             loadComponent: () =>
               import("./pages/share-result/share-result.page").then(
-                (m) => m.ShareResultPage,
+                (m) => m.ShareResultPage
               ),
           },
           {
@@ -47,16 +49,19 @@ const routes: Routes = [
             loadComponent: () =>
               import("./pages/privacy/privacy.page").then((m) => m.PrivacyPage),
           },
-        ]
+        ],
       },
-    ]
+      {
+        path: "sheet",
+        loadComponent: () =>
+          import("./pages/sheet/sheet.page").then((m) => m.SheetPage),
+      },
+    ],
   },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
