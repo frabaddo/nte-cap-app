@@ -114,12 +114,17 @@ export class SheetRoseComponent implements AfterViewInit {
         threshold: 0,
         gestureName: "openHexagonOnHover",
         onStart: (event) => {
+          event.event.preventDefault();
           this.isGestureActive.next(true);
           this.onMoveGestureObs.next(event);
           currentSub = this.handleOnMove.subscribe();
         },
-        onMove: (event) => this.onMoveGestureObs.next(event),
-        onEnd: () => {
+        onMove: (event) => {
+          event.event.preventDefault();
+          this.onMoveGestureObs.next(event);
+        },
+        onEnd: (event) => {
+          event.event.preventDefault();
           this.isGestureActive.next(false);
           this.openedModal.set(false);
           this.lastPositionRecorded.set(false);

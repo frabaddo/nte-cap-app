@@ -1,5 +1,4 @@
 ion-content {
-  --padding-top: 32px;
   --padding-bottom: 32px;
   --background: var(--main-background) no-repeat center center / cover;
 }
@@ -12,4 +11,7 @@ ion-header {
 }
 ion-header::after {
   background: none;
+}
+.rose-container {
+  padding: 2rem;
 }
