@@ -15,4 +15,8 @@ export class SheetRoseExagonComponent {
 
   cleanText = computed(() => this.text()?.trim());
   cleanImage = computed(() => this.image()?.trim());
+
+  isPopupVisible = computed(
+    () => this.isOpen() && (!!this.cleanImage() || !!this.cleanText())
+  );
 }
