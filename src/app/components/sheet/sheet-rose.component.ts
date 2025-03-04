@@ -176,7 +176,7 @@ export class SheetRoseComponent implements AfterViewInit {
     element: undefined | [number, number];
     event: GestureDetail;
   }) {
-    if (this.openedModal()) {
+    if (this.openedModal() && !value.element) {
       this.openedModal.set(false);
       this.lastPositionRecorded.set(false);
     } else {
@@ -189,10 +189,10 @@ export class SheetRoseComponent implements AfterViewInit {
 
   haveMovedAmount(event: GestureDetail, last: [number, number]) {
     return (
-      event.currentX > last[0] + 50 ||
-      event.currentX < last[0] - 50 ||
-      event.currentY > last[1] + 50 ||
-      event.currentY < last[1] - 50
+      event.currentX > last[0] + 5 ||
+      event.currentX < last[0] - 5 ||
+      event.currentY > last[1] + 5 ||
+      event.currentY < last[1] - 5
     );
   }
 
