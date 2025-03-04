@@ -13,7 +13,7 @@ import { AppRoutingModule } from "./app-routing.module";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    IonicModule.forRoot({ hardwareBackButton: false }),
+    IonicModule.forRoot({ hardwareBackButton: false, useSetInputAPI: true }),
     AppRoutingModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Modifica </ion-title>
+    <ion-button slot="end" fill="clear" (click)="modalCtrl.dismiss()"
+      ><ion-icon slot="icon-only" name="close"></ion-icon
+    ></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  @if(inputImage()){
+  <h2 class="ion-text-center">
+    <ion-thumbnail>
+      <ion-img [src]="inputImage()"></ion-img>
+    </ion-thumbnail>
+  </h2>
+  }
+  <ion-input
+    placeholder="insert image url..."
+    [(ngModel)]="inputImage"
+  ></ion-input>
+  <ion-textarea
+    autoGrow
+    placeholder="insert text..."
+    [(ngModel)]="inputText"
+  ></ion-textarea>
+  <ion-button expand="block" (click)="save()">Save</ion-button>
+</ion-content>

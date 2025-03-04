@@ -1,9 +1,11 @@
-<ion-popover [isOpen]="isOpen() && (icon() || text())" [showBackdrop]="false">
+<ion-popover [isOpen]="isOpen() && (image() || text())" [showBackdrop]="false">
   <ng-template>
     <div>
-      @if(icon()){
+      @if(image()){
       <h2 class="ion-text-center">
-        <ion-icon [name]="icon"></ion-icon>
+        <ion-thumbnail>
+          <ion-img [src]="image()"></ion-img>
+        </ion-thumbnail>
       </h2>
       }
       <p>
@@ -12,6 +14,10 @@
     </div>
   </ng-template>
 </ion-popover>
-@if(icon()){
-<ion-icon name="pencil"></ion-icon>
+@if(image()){
+<ion-thumbnail>
+  <ion-img [src]="image()"></ion-img>
+</ion-thumbnail>
+} @else if (text()) {
+<ion-icon name="document-outline"></ion-icon>
 }

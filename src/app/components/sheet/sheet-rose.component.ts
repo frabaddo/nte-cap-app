@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  effect,
   ElementRef,
   inject,
   OnInit,
@@ -8,21 +9,38 @@ import {
 } from "@angular/core";
 import { toObservable } from "@angular/core/rxjs-interop";
 import { SheetRoseExagonComponent } from "./components/sheet-rose-exagon/sheet-rose-exagon.component";
-import { Gesture, GestureController, GestureDetail } from "@ionic/angular";
+import {
+  Gesture,
+  GestureController,
+  GestureDetail,
+  ModalController,
+} from "@ionic/angular";
 import {
   BehaviorSubject,
   distinctUntilChanged,
-  filter,
   map,
-  of,
-  startWith,
   Subject,
   Subscription,
   switchMap,
-  takeUntil,
-  takeWhile,
   tap,
 } from "rxjs";
+import { SheetRoseEditorComponent } from "./components/sheet-rose-editor/sheet-rose-editor.component";
+
+export type HexagonInfos = {
+  text: string;
+  image: string | null;
+};
+
+const exampleRowCel: () => HexagonInfos = () => ({
+  text: "", //"Lorem ipsum dolor sit amet",
+  image:
+    // Math.random() >= 0.5
+    //   ? "https://www.svgrepo.com/show/532035/cloud-bolt.svg"
+    //   : Math.random() >= 0.5
+    //   ? "https://cdn.vectorstock.com/i/1000v/48/06/devil-ui-icon-dark-fantasy-game-sign-vector-43854806.jpg"
+    //   :
+    null,
+});
 
 @Component({
   selector: "app-sheet-rose",
@@ -32,6 +50,7 @@ import {
 })
 export class SheetRoseComponent implements AfterViewInit {
   gestureCtrl = inject(GestureController);
+  modalCtrl = inject(ModalController);
   element = inject(ElementRef);
 
   gesture: Gesture;
@@ -45,17 +64,26 @@ export class SheetRoseComponent implements AfterViewInit {
   openedModal = signal<[number, number] | false>(false);
   openedModal$ = toObservable(this.openedModal);
 
-  sheet = signal([
-    new Array(1).fill(false),
-    new Array(2).fill(false),
-    new Array(3).fill(false),
-    new Array(2).fill(false),
-    new Array(3).fill(false),
-    new Array(2).fill(false),
-    new Array(3).fill(false),
-    new Array(2).fill(false),
-    new Array(1).fill(false),
+  sheet = signal<HexagonInfos[][]>([
+    new Array(1).fill(exampleRowCel()),
+    new Array(2).fill(exampleRowCel()),
+    new Array(3).fill(exampleRowCel()),
+    new Array(2).fill(exampleRowCel()),
+    new Array(3).fill(exampleRowCel()),
+    new Array(2).fill(exampleRowCel()),
+    new Array(3).fill(exampleRowCel()),
+    new Array(2).fill(exampleRowCel()),
+    new Array(1).fill(exampleRowCel()),
   ]);
+
+  effectSaveSheet = effect(() => {
+    localStorage.setItem("sheet", JSON.stringify(this.sheet()));
+  });
+
+  constructor() {
+    if (localStorage.getItem("sheet"))
+      this.sheet.set(JSON.parse(localStorage.getItem("sheet")));
+  }
 
   handleOnMove = this.onMoveGestureObs.pipe(
     map((event) => {
@@ -83,7 +111,7 @@ export class SheetRoseComponent implements AfterViewInit {
         (this.openedModal() !== false &&
           this.lastPositionRecorded() &&
           next.event &&
-          this.haveMovedAmount(
+          !this.haveMovedAmount(
             next.event,
             this.lastPositionRecorded() as [number, number]
           )) ||
@@ -117,6 +145,7 @@ export class SheetRoseComponent implements AfterViewInit {
           event.event.preventDefault();
           this.isGestureActive.next(true);
           this.onMoveGestureObs.next(event);
+          console.log(event);
           currentSub = this.handleOnMove.subscribe();
         },
         onMove: (event) => {
@@ -124,6 +153,8 @@ export class SheetRoseComponent implements AfterViewInit {
           this.onMoveGestureObs.next(event);
         },
         onEnd: (event) => {
+          if (this.openedModal())
+            this.openEdit(this.openedModal()[0], this.openedModal()[1]);
           event.event.preventDefault();
           this.isGestureActive.next(false);
           this.openedModal.set(false);
@@ -156,11 +187,34 @@ export class SheetRoseComponent implements AfterViewInit {
   }
 
   haveMovedAmount(event: GestureDetail, last: [number, number]) {
-    return !(
+    return (
       event.currentX > last[0] + 50 ||
       event.currentX < last[0] - 50 ||
       event.currentY > last[1] + 50 ||
       event.currentY < last[1] - 50
     );
+  }
+
+  openEdit(row: number, cel: number) {
+    let hexInfo = this.sheet()[row][cel];
+    this.modalCtrl
+      .create({
+        component: SheetRoseEditorComponent,
+        componentProps: {
+          text: hexInfo.text,
+          image: hexInfo.image,
+        },
+      })
+      .then((modal) => {
+        modal.onDidDismiss().then((ev) => {
+          if (ev.data)
+            this.sheet.update((_sheet) => {
+              let sheet = structuredClone(_sheet);
+              sheet[row][cel] = ev.data;
+              return sheet;
+            });
+        });
+        modal.present();
+      });
   }
 }

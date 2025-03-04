@@ -7,7 +7,7 @@
   align-items: center;
 }
 :host.active {
-  background: gray;
+  background: var(--ion-color-medium);
 }
 
 ion-popover::part(content) {

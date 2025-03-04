@@ -1,11 +1,14 @@
 @for ( _row of sheet(); let row = $index; track $index) {
 <div class="row">
-  @let modalX = openedModal()?.[0]; @let modalY = openedModal()?.[1]; @for (
-  _cel of _row; let cel = $index; track $index) {
+  @let modalX = openedModal()?.[0]; @let modalY = openedModal()?.[1]; @for ( hex
+  of _row; let cel = $index; track $index) {
   <div class="exagon" [attr.data-col]="cel" [attr.data-row]="row">
     <div class="inner">
-      <app-sheet-rose-exagon [isOpen]="modalX === row && modalY === cel">
-        {{ row }}-{{ cel }}
+      <app-sheet-rose-exagon
+        [isOpen]="modalX === row && modalY === cel"
+        [image]="hex.image"
+        text="{{ hex.text }}"
+      >
       </app-sheet-rose-exagon>
     </div>
   </div>
