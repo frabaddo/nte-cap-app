@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from "@angular/core";
+import { Component, computed, input } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
 
 @Component({
@@ -12,4 +12,7 @@ export class SheetRoseExagonComponent {
   isOpen = input<boolean>(false);
   image = input<string | undefined>(undefined);
   text = input<string | undefined>(undefined);
+
+  cleanText = computed(() => this.text()?.trim());
+  cleanImage = computed(() => this.image()?.trim());
 }

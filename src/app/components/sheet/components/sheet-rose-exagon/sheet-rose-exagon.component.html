@@ -1,4 +1,7 @@
-<ion-popover [isOpen]="isOpen() && (image() || text())" [showBackdrop]="false">
+<ion-popover
+  [isOpen]="isOpen() && (cleanImage() || cleanText())"
+  [showBackdrop]="false"
+>
   <ng-template>
     <div>
       @if(image()){

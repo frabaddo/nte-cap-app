@@ -19,6 +19,7 @@ import {
   BehaviorSubject,
   distinctUntilChanged,
   map,
+  startWith,
   Subject,
   Subscription,
   switchMap,
@@ -107,21 +108,22 @@ export class SheetRoseComponent implements AfterViewInit {
       if (this.openedModal() === false) this.lastTime.set(ev.event.currentTime);
     }),
     distinctUntilChanged((prev, next) => {
-      return (
-        (this.openedModal() !== false &&
+      if (this.openedModal() !== false)
+        return (
           this.lastPositionRecorded() &&
           next.event &&
           !this.haveMovedAmount(
             next.event,
             this.lastPositionRecorded() as [number, number]
-          )) ||
-        (this.openedModal() === false &&
-          ((!next.element && !prev.element) ||
-            (next.element &&
-              prev.element &&
-              next.element[0] === prev.element[0] &&
-              next.element[1] === prev.element[1] &&
-              !(this.lastTime() + 1000 > next.event.currentTime))))
+          )
+        );
+      return (
+        (!next.element && !prev.element) ||
+        (next.element &&
+          prev.element &&
+          next.element[0] === prev.element[0] &&
+          next.element[1] === prev.element[1] &&
+          !(this.lastTime() + 1000 > next.event.currentTime))
       );
     }),
     switchMap((ev) => {
@@ -145,7 +147,7 @@ export class SheetRoseComponent implements AfterViewInit {
           event.event.preventDefault();
           this.isGestureActive.next(true);
           this.onMoveGestureObs.next(event);
-          console.log(event);
+          // console.log(event);
           currentSub = this.handleOnMove.subscribe();
         },
         onMove: (event) => {
