@@ -4,7 +4,7 @@ import {
   effect,
   ElementRef,
   inject,
-  OnInit,
+  input,
   signal,
 } from "@angular/core";
 import { toObservable } from "@angular/core/rxjs-interop";
@@ -54,6 +54,8 @@ export class SheetRoseComponent implements AfterViewInit {
   modalCtrl = inject(ModalController);
   element = inject(ElementRef);
 
+  saveName = input("sheet");
+
   gesture: Gesture;
 
   isGestureActive = new BehaviorSubject<boolean>(false);
@@ -78,12 +80,12 @@ export class SheetRoseComponent implements AfterViewInit {
   ]);
 
   effectSaveSheet = effect(() => {
-    localStorage.setItem("sheet", JSON.stringify(this.sheet()));
+    localStorage.setItem(this.saveName(), JSON.stringify(this.sheet()));
   });
 
   constructor() {
-    if (localStorage.getItem("sheet"))
-      this.sheet.set(JSON.parse(localStorage.getItem("sheet")));
+    if (localStorage.getItem(this.saveName()))
+      this.sheet.set(JSON.parse(localStorage.getItem(this.saveName())));
   }
 
   handleOnMove = this.onMoveGestureObs.pipe(

@@ -5,7 +5,7 @@
   align-items: center;
   --container-padding: 2rem;
   --size: calc((100vw - (var(--container-padding) * 2)) / 4);
-  height: calc(var(--size) * 4.5);
+  margin: 2rem;
 }
 .row {
   display: flex;
