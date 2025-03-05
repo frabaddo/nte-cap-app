@@ -5,6 +5,12 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <div class="rose-container">
-    <app-sheet-rose></app-sheet-rose>
+    <app-sheet-rose [(sheet)]="sheet"></app-sheet-rose>
+  </div>
+  <h2 class="ion-text-center">Sventure</h2>
+  <div class="lesson-container">
+    @for(missFortune of missFortunes(); track $index){
+    <app-sheet-rose [(sheet)]="missFortune"></app-sheet-rose>
+    }
   </div>
 </ion-content>

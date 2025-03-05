@@ -5,6 +5,7 @@ import {
   ElementRef,
   inject,
   input,
+  model,
   signal,
 } from "@angular/core";
 import { toObservable } from "@angular/core/rxjs-interop";
@@ -27,21 +28,10 @@ import {
 } from "rxjs";
 import { SheetRoseEditorComponent } from "./components/sheet-rose-editor/sheet-rose-editor.component";
 
-export type HexagonInfos = {
+export type ExagonInfos = {
   text: string;
   image: string | null;
 };
-
-const exampleRowCel: () => HexagonInfos = () => ({
-  text: "", //"Lorem ipsum dolor sit amet",
-  image:
-    // Math.random() >= 0.5
-    //   ? "https://www.svgrepo.com/show/532035/cloud-bolt.svg"
-    //   : Math.random() >= 0.5
-    //   ? "https://cdn.vectorstock.com/i/1000v/48/06/devil-ui-icon-dark-fantasy-game-sign-vector-43854806.jpg"
-    //   :
-    null,
-});
 
 @Component({
   selector: "app-sheet-rose",
@@ -54,8 +44,6 @@ export class SheetRoseComponent implements AfterViewInit {
   modalCtrl = inject(ModalController);
   element = inject(ElementRef);
 
-  saveName = input("sheet");
-
   gesture: Gesture;
 
   isGestureActive = new BehaviorSubject<boolean>(false);
@@ -67,26 +55,7 @@ export class SheetRoseComponent implements AfterViewInit {
   openedModal = signal<[number, number] | false>(false);
   openedModal$ = toObservable(this.openedModal);
 
-  sheet = signal<HexagonInfos[][]>([
-    new Array(1).fill(exampleRowCel()),
-    new Array(2).fill(exampleRowCel()),
-    new Array(3).fill(exampleRowCel()),
-    new Array(2).fill(exampleRowCel()),
-    new Array(3).fill(exampleRowCel()),
-    new Array(2).fill(exampleRowCel()),
-    new Array(3).fill(exampleRowCel()),
-    new Array(2).fill(exampleRowCel()),
-    new Array(1).fill(exampleRowCel()),
-  ]);
-
-  effectSaveSheet = effect(() => {
-    localStorage.setItem(this.saveName(), JSON.stringify(this.sheet()));
-  });
-
-  constructor() {
-    if (localStorage.getItem(this.saveName()))
-      this.sheet.set(JSON.parse(localStorage.getItem(this.saveName())));
-  }
+  sheet = model<ExagonInfos[][]>([]);
 
   handleOnMove = this.onMoveGestureObs.pipe(
     map((event) => {

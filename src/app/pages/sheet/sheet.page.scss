@@ -15,3 +15,12 @@ ion-header::after {
 .rose-container {
   padding: 2rem;
 }
+.lesson-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem;
+  app-sheet-rose {
+    --size: 8rem;
+  }
+}
