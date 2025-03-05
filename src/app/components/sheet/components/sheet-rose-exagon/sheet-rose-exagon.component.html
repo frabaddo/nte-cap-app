@@ -7,6 +7,10 @@
           <ion-img [src]="image()"></ion-img>
         </ion-thumbnail>
       </h2>
+      } @if(topWhite()){
+      <p>top white: {{ topWhite() }}</p>
+      } @if(topBlack()){
+      <p>top black: {{ topBlack() }}</p>
       }
       <p>
         {{ text() }}

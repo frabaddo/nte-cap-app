@@ -12,6 +12,8 @@ export class SheetRoseExagonComponent {
   isOpen = input<boolean>(false);
   image = input<string | undefined>(undefined);
   text = input<string | undefined>(undefined);
+  topWhite = input<number | undefined>(undefined);
+  topBlack = input<number | undefined>(undefined);
 
   cleanText = computed(() => this.text()?.trim());
   cleanImage = computed(() => this.image()?.trim());

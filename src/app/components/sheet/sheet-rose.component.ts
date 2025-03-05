@@ -31,6 +31,8 @@ import { SheetRoseEditorComponent } from "./components/sheet-rose-editor/sheet-r
 export type ExagonInfos = {
   text: string;
   image: string | null;
+  topWhite?: number;
+  topBlack?: number;
 };
 
 @Component({
@@ -168,13 +170,15 @@ export class SheetRoseComponent implements AfterViewInit {
   }
 
   openEdit(row: number, cel: number) {
-    let hexInfo = this.sheet()[row][cel];
+    let exagonInfo = this.sheet()[row][cel];
     this.modalCtrl
       .create({
         component: SheetRoseEditorComponent,
         componentProps: {
-          text: hexInfo.text,
-          image: hexInfo.image,
+          text: exagonInfo.text,
+          image: exagonInfo.image,
+          topWhite: exagonInfo.topWhite,
+          topBlack: exagonInfo.topBlack,
         },
       })
       .then((modal) => {
