@@ -15,6 +15,8 @@ export class SheetRoseExagonComponent {
   topWhite = input<number | undefined>(undefined);
   topBlack = input<number | undefined>(undefined);
 
+  cords = input<[number, number]>();
+
   cleanText = computed(() => this.text()?.trim());
   cleanImage = computed(() => this.image()?.trim());
 

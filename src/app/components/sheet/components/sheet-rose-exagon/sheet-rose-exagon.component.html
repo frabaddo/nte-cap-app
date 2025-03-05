@@ -18,10 +18,23 @@
     </div>
   </ng-template>
 </ion-popover>
-@if(image()){
-<ion-thumbnail>
-  <ion-img [src]="image()"></ion-img>
-</ion-thumbnail>
-} @else if (text()) {
-<ion-icon name="document-outline"></ion-icon>
-}
+<div class="exagon" [attr.data-col]="cords()[0]" [attr.data-row]="cords()[1]">
+  @if(topWhite()){
+  <div class="small-exagon white">
+    <div class="inner">{{ topWhite() }}</div>
+  </div>
+  } @if(topBlack()){
+  <div class="small-exagon black">
+    <div class="inner">{{ topBlack() }}</div>
+  </div>
+  }
+  <div class="inner">
+    @if(image()){
+    <ion-thumbnail>
+      <ion-img [src]="image()"></ion-img>
+    </ion-thumbnail>
+    } @else if (text()) {
+    <ion-icon name="document-outline"></ion-icon>
+    }
+  </div>
+</div>

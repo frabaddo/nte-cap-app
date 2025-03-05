@@ -6,11 +6,72 @@
   justify-content: center;
   align-items: center;
 }
-:host.active {
+:host.active .exagon .inner {
   background: var(--ion-color-medium);
 }
 
 ion-popover::part(content) {
   top: unset;
   bottom: 1%;
+}
+
+.exagon,
+.small-exagon {
+  width: var(--size);
+  margin: calc(var(--size) * -0.3 / 1.35);
+  aspect-ratio: 1 / cos(30deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  &::before {
+    content: "";
+    background: gray;
+    clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  > .inner {
+    --size: calc(var(--size) -1px);
+    position: absolute;
+    content: "";
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    width: var(--size);
+    background: white;
+    clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+}
+
+.small-exagon {
+  --small-size: calc(var(--size) / 4);
+  width: var(--small-size);
+  margin: calc(var(--small-size) * -0.3 / 1.35);
+  z-index: 1;
+  position: absolute;
+  > .inner {
+    --small-size: calc(var(--small-size) -1px);
+    width: var(--small-size);
+  }
+}
+.small-exagon.white {
+  top: 10%;
+  right: 26%;
+}
+.small-exagon.black {
+  bottom: 10%;
+  left: 26%;
+  .inner {
+    background: black;
+    color: white;
+  }
 }
