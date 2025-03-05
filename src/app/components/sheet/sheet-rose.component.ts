@@ -61,11 +61,17 @@ export class SheetRoseComponent implements AfterViewInit {
 
   handleOnMove = this.onMoveGestureObs.pipe(
     map((event) => {
-      let elements = event
-        ? document
-            .elementsFromPoint(event.currentX, event.currentY)
-            .filter((el) => el.classList.contains("exagon"))
-        : [];
+      let currentElements = document.elementsFromPoint(
+        event.currentX,
+        event.currentY
+      );
+      let elements =
+        currentElements.findIndex((el) => el === this.element.nativeElement) !==
+        -1
+          ? event
+            ? currentElements.filter((el) => el.classList.contains("exagon"))
+            : []
+          : [];
       let el = elements?.[0] ?? undefined;
       return el
         ? {
