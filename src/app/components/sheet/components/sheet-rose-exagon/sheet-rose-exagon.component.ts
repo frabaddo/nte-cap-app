@@ -23,4 +23,8 @@ export class SheetRoseExagonComponent {
   isPopupVisible = computed(
     () => this.isOpen() && (!!this.cleanImage() || !!this.cleanText())
   );
+
+  showDetailContainer = computed(
+    () => this.image() || this.topWhite() || this.topBlack()
+  );
 }

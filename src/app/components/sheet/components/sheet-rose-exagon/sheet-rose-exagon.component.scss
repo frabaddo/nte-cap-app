@@ -16,7 +16,8 @@ ion-popover::part(content) {
 }
 
 .exagon,
-.small-exagon {
+.small-exagon,
+.preview-exagon {
   width: var(--size);
   margin: calc(var(--size) * -0.3 / 1.35);
   aspect-ratio: 1 / cos(30deg);
@@ -61,6 +62,9 @@ ion-popover::part(content) {
   > .inner {
     --small-size: calc(var(--small-size) -1px);
     width: var(--small-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .small-exagon.white {
@@ -73,8 +77,32 @@ ion-popover::part(content) {
   .inner {
     background: black;
     color: white;
+  }
+}
+
+.preview-exagon {
+  --preview-size: 4rem;
+  width: var(--preview-size);
+  display: inline-flex;
+  > .inner {
+    --preview-size: calc(var(--preview-size) -1px);
+    width: var(--preview-size);
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  &.black .inner {
+    background: black;
+    color: white;
+  }
+}
+
+.popover-content {
+  padding: 0.5rem 1rem;
+}
+.detail-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }

@@ -1,16 +1,26 @@
 <ion-popover [isOpen]="isPopupVisible()" [showBackdrop]="false">
   <ng-template>
-    <div>
-      @if(image()){
-      <h2 class="ion-text-center">
+    <div class="popover-content">
+      @if(showDetailContainer()){
+      <div class="detail-container">
+        @if(image()){
         <ion-thumbnail>
           <ion-img [src]="image()"></ion-img>
         </ion-thumbnail>
-      </h2>
-      } @if(topWhite()){
-      <p>top white: {{ topWhite() }}</p>
-      } @if(topBlack()){
-      <p>top black: {{ topBlack() }}</p>
+        } @if(topWhite()){
+        <div class="preview-exagon">
+          <div class="inner">
+            {{ topWhite() }}
+          </div>
+        </div>
+        } @if(topBlack()){
+        <div class="preview-exagon black">
+          <div class="inner">
+            {{ topBlack() }}
+          </div>
+        </div>
+        }
+      </div>
       }
       <p>
         {{ text() }}
@@ -34,7 +44,7 @@
       <ion-img [src]="image()"></ion-img>
     </ion-thumbnail>
     } @else if (text()) {
-    <ion-icon name="document-outline"></ion-icon>
+    <ion-icon style="font-size: 3rem" name="add"></ion-icon>
     }
   </div>
 </div>

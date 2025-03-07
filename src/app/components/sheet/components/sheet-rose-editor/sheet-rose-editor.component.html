@@ -14,24 +14,39 @@
     </ion-thumbnail>
   </h2>
   }
-  <ion-input
-    placeholder="insert image url..."
-    [(ngModel)]="inputImage"
-  ></ion-input>
-  <ion-input
-    placeholder="insert top white..."
-    type="number"
-    [(ngModel)]="inputTopWhite"
-  ></ion-input>
-  <ion-input
-    placeholder="insert top Black..."
-    type="number"
-    [(ngModel)]="inputTopBlack"
-  ></ion-input>
-  <ion-textarea
-    autoGrow
-    placeholder="insert text..."
-    [(ngModel)]="inputText"
-  ></ion-textarea>
+  <ion-item>
+    <ion-input
+      placeholder="insert image url..."
+      [(ngModel)]="inputImage"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea
+      autoGrow
+      placeholder="insert text..."
+      [(ngModel)]="inputText"
+    ></ion-textarea>
+  </ion-item>
+
+  <div class="exagon-container">
+    <div class="exagon white">
+      <div class="inner">
+        <ion-input
+          placeholder="add..."
+          type="number"
+          [(ngModel)]="inputTopWhite"
+        ></ion-input>
+      </div>
+    </div>
+    <div class="exagon black">
+      <div class="inner">
+        <ion-input
+          placeholder="add..."
+          type="number"
+          [(ngModel)]="inputTopBlack"
+        ></ion-input>
+      </div>
+    </div>
+  </div>
   <ion-button expand="block" (click)="save()">Save</ion-button>
 </ion-content>

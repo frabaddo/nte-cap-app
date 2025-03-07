@@ -1,0 +1,54 @@
+:host {
+  --size: 6rem;
+}
+.exagon-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.exagon {
+  width: var(--size);
+  aspect-ratio: 1 / cos(30deg);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  &::before {
+    content: "";
+    background: gray;
+    clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  > .inner {
+    --size: calc(var(--size) -1px);
+    position: absolute;
+    content: "";
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    width: var(--size);
+    background: white;
+    clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+}
+.exagon.black {
+  .inner {
+    background: black;
+    color: white;
+  }
+}
+
+.exagon ion-input {
+  text-align: center;
+  --highlight-color: unset;
+}
