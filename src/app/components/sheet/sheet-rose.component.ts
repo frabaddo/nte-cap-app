@@ -14,6 +14,7 @@ import {
   Gesture,
   GestureController,
   GestureDetail,
+  IonicModule,
   ModalController,
 } from "@ionic/angular";
 import {

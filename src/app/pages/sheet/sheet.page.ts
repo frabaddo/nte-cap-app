@@ -1,7 +1,13 @@
 import { CommonModule } from "@angular/common";
-import { Component, effect, signal, WritableSignal } from "@angular/core";
+import {
+  Component,
+  effect,
+  inject,
+  signal,
+  WritableSignal,
+} from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
+import { IonicModule, PopoverController } from "@ionic/angular";
 import {
   ExagonInfos,
   SheetRoseComponent,
@@ -25,6 +31,8 @@ const exampleRowCel: () => ExagonInfos = () => ({
   imports: [CommonModule, FormsModule, IonicModule, SheetRoseComponent],
 })
 export class SheetPage {
+  popoverCtrl = inject(PopoverController);
+  firstOpeningTip = signal<boolean>(false);
   effectSaveSheet = effect(() => {
     localStorage.setItem("sheet", JSON.stringify(this.sheet()));
   });
@@ -42,6 +50,7 @@ export class SheetPage {
       this.missFortunes.set(
         JSON.parse(localStorage.getItem("missFortunes")).map((el) => signal(el))
       );
+    this.firstOpeningTip.set(!!localStorage.getItem("firstOpeningTip"));
   }
 
   sheet = signal<ExagonInfos[][]>([
@@ -62,4 +71,9 @@ export class SheetPage {
     signal([new Array(1).fill(exampleRowCel())]),
     signal([new Array(1).fill(exampleRowCel())]),
   ]);
+
+  closeTipPopup() {
+    localStorage.setItem("firstOpeningTip", "done");
+    this.firstOpeningTip.set(true);
+  }
 }

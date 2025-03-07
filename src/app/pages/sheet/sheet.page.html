@@ -13,4 +13,30 @@
     <app-sheet-rose [(sheet)]="missFortune"></app-sheet-rose>
     }
   </div>
+  <ion-popover
+    [showBackdrop]="true"
+    [backdropDismiss]="true"
+    [isOpen]="!firstOpeningTip()"
+  >
+    <ng-template>
+      <ion-content class="ion-padding">
+        <p>Scorri il dito sugli esagoni per vedere il loro contenuto.</p>
+        <p>
+          Rimuovi il dito mentre la preview di un esagono è aperta, per accedere
+          alla modale di modifica.
+        </p>
+        <!-- <ion-item>
+          <ion-note> Non mostrare alla prossima apertura </ion-note>
+        </ion-item> -->
+      </ion-content>
+      <ion-footer>
+        <ion-button
+          class="ion-no-margin"
+          expand="full"
+          (click)="closeTipPopup()"
+          >Chiudi</ion-button
+        >
+      </ion-footer>
+    </ng-template>
+  </ion-popover>
 </ion-content>
