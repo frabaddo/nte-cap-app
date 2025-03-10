@@ -8,7 +8,7 @@ import {
   model,
   signal,
 } from "@angular/core";
-import { toObservable } from "@angular/core/rxjs-interop";
+import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { SheetRoseExagonComponent } from "./components/sheet-rose-exagon/sheet-rose-exagon.component";
 import {
   Gesture,
@@ -40,7 +40,7 @@ export type ExagonInfos = {
   selector: "app-sheet-rose",
   templateUrl: "./sheet-rose.component.html",
   styleUrls: ["./sheet-rose.component.scss"],
-  imports: [SheetRoseExagonComponent],
+  imports: [SheetRoseExagonComponent, IonicModule],
 })
 export class SheetRoseComponent implements AfterViewInit {
   gestureCtrl = inject(GestureController);
@@ -49,7 +49,8 @@ export class SheetRoseComponent implements AfterViewInit {
 
   gesture: Gesture;
 
-  isGestureActive = new BehaviorSubject<boolean>(false);
+  isGestureActive$ = new BehaviorSubject<boolean>(false);
+  isGestureActive = toSignal(this.isGestureActive$, { requireSync: true });
   lastPositionRecorded = signal<[number, number] | false>(false);
   onMoveGestureObs = new Subject<GestureDetail>();
 
@@ -109,7 +110,7 @@ export class SheetRoseComponent implements AfterViewInit {
       );
     }),
     switchMap((ev) => {
-      return this.isGestureActive.pipe(
+      return this.isGestureActive$.pipe(
         map((active) => {
           return active ? ev : { element: undefined, event: undefined };
         })
@@ -128,7 +129,7 @@ export class SheetRoseComponent implements AfterViewInit {
         onStart: (event) => {
           event.event.preventDefault();
           currentSub = this.handleOnMove.subscribe();
-          this.isGestureActive.next(true);
+          this.isGestureActive$.next(true);
           this.onMoveGestureObs.next(event);
         },
         onMove: (event) => {
@@ -139,7 +140,7 @@ export class SheetRoseComponent implements AfterViewInit {
           if (this.openedModal())
             this.openEdit(this.openedModal()[0], this.openedModal()[1]);
           event.event.preventDefault();
-          this.isGestureActive.next(false);
+          this.isGestureActive$.next(false);
           this.openedModal.set(false);
           this.lastPositionRecorded.set(false);
           if (currentSub) {

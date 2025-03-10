@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
 }
-:host.active .exagon .inner {
+:host.active > .exagon > .inner {
   background: var(--ion-color-medium);
 }
 

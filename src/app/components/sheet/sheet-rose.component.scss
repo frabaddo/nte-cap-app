@@ -14,3 +14,13 @@
   align-items: center;
   gap: calc(var(--size) * 0.94);
 }
+
+ion-backdrop {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  z-index: 99;
+}
+app-sheet-rose-exagon.active {
+  z-index: 100;
+}
