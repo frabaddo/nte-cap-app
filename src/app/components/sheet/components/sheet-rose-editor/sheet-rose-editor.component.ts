@@ -13,6 +13,7 @@ export class SheetRoseEditorComponent {
   image = input<string>();
   topWhite = input<number | undefined>(undefined);
   topBlack = input<number | undefined>(undefined);
+  disabled = input<boolean>(false);
 
   modalCtrl = inject(ModalController);
 

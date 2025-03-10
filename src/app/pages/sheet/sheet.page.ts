@@ -36,6 +36,12 @@ export class SheetPage {
   effectSaveSheet = effect(() => {
     localStorage.setItem("sheet", JSON.stringify(this.sheet()));
   });
+  effectSaveConfusion = effect(() => {
+    localStorage.setItem("confusion", JSON.stringify(this.confusion()));
+  });
+  effectSaveAdrenalin = effect(() => {
+    localStorage.setItem("adrenalin", JSON.stringify(this.adrenalin()));
+  });
   effectSaveMissFortunes = effect(() => {
     localStorage.setItem(
       "missFortunes",
@@ -46,6 +52,10 @@ export class SheetPage {
   constructor() {
     if (localStorage.getItem("sheet"))
       this.sheet.set(JSON.parse(localStorage.getItem("sheet")));
+    if (localStorage.getItem("adrenalin"))
+      this.adrenalin.set(JSON.parse(localStorage.getItem("adrenalin")));
+    if (localStorage.getItem("confusion"))
+      this.confusion.set(JSON.parse(localStorage.getItem("confusion")));
     if (localStorage.getItem("missFortunes"))
       this.missFortunes.set(
         JSON.parse(localStorage.getItem("missFortunes")).map((el) => signal(el))
@@ -70,6 +80,23 @@ export class SheetPage {
     signal([new Array(1).fill(exampleRowCel())]),
     signal([new Array(1).fill(exampleRowCel())]),
     signal([new Array(1).fill(exampleRowCel())]),
+  ]);
+
+  confusion = signal<ExagonInfos[][]>([
+    [
+      {
+        text: "Adrenalina",
+        image: "assets/action.png",
+      },
+    ],
+  ]);
+  adrenalin = signal<ExagonInfos[][]>([
+    [
+      {
+        text: "Confusione",
+        image: "assets/confused.png",
+      },
+    ],
   ]);
 
   closeTipPopup() {

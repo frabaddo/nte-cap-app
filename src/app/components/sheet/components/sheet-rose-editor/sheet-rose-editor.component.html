@@ -13,17 +13,20 @@
       <ion-img [src]="inputImage()"></ion-img>
     </ion-thumbnail>
   </h2>
-  }
+  } @if(!disabled()){
   <ion-item>
     <ion-input
-      placeholder="insert image url..."
+      [disabled]="disabled()"
+      placeholder="Inserisci il link ad un'immagine..."
       [(ngModel)]="inputImage"
     ></ion-input>
   </ion-item>
+  }
   <ion-item>
     <ion-textarea
       autoGrow
-      placeholder="insert text..."
+      [disabled]="disabled()"
+      placeholder="Inserisci una descrizione..."
       [(ngModel)]="inputText"
     ></ion-textarea>
   </ion-item>
@@ -32,7 +35,7 @@
     <div class="exagon white">
       <div class="inner">
         <ion-input
-          placeholder="add..."
+          placeholder="1...9"
           type="number"
           [(ngModel)]="inputTopWhite"
         ></ion-input>
@@ -41,12 +44,12 @@
     <div class="exagon black">
       <div class="inner">
         <ion-input
-          placeholder="add..."
+          placeholder="1...9"
           type="number"
           [(ngModel)]="inputTopBlack"
         ></ion-input>
       </div>
     </div>
   </div>
-  <ion-button expand="block" (click)="save()">Save</ion-button>
+  <ion-button expand="block" (click)="save()">Salva</ion-button>
 </ion-content>

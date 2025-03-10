@@ -60,6 +60,8 @@ export class SheetRoseComponent implements AfterViewInit {
 
   sheet = model<ExagonInfos[][]>([]);
 
+  disabled = input<boolean>(false);
+
   handleOnMove = this.onMoveGestureObs.pipe(
     map((event) => {
       let currentElements = document.elementsFromPoint(
@@ -186,6 +188,7 @@ export class SheetRoseComponent implements AfterViewInit {
           image: exagonInfo.image,
           topWhite: exagonInfo.topWhite,
           topBlack: exagonInfo.topBlack,
+          disabled: this.disabled(),
         },
       })
       .then((modal) => {
