@@ -4,4 +4,8 @@ import { Bag } from "./bag";
 @Injectable({
   providedIn: "root",
 })
-export class BagService extends Bag {}
+export class BagService extends Bag {
+  constructor() {
+    super();
+  }
+}
