@@ -6,7 +6,9 @@ import {
   IonHeader,
   IonIcon,
   IonImg,
+  IonInput,
   IonItem,
+  IonTextarea,
   IonThumbnail,
   IonTitle,
   IonToolbar,
@@ -28,6 +30,8 @@ import {
     IonIcon,
     IonThumbnail,
     IonImg,
+    IonInput,
+    IonTextarea,
   ],
 })
 export class SheetRoseEditorComponent {

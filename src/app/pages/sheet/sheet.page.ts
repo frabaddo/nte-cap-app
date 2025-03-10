@@ -68,10 +68,34 @@ export class SheetPage {
   constructor() {
     if (localStorage.getItem("sheet"))
       this.sheet.set(JSON.parse(localStorage.getItem("sheet")));
-    if (localStorage.getItem("adrenalin"))
-      this.adrenalin.set(JSON.parse(localStorage.getItem("adrenalin")));
-    if (localStorage.getItem("confusion"))
-      this.confusion.set(JSON.parse(localStorage.getItem("confusion")));
+    if (localStorage.getItem("adrenalin")) {
+      let exagons = JSON.parse(localStorage.getItem("adrenalin"));
+      this.adrenalin.update((val) => {
+        return [
+          [
+            {
+              ...exagons[0][0],
+              text: "Adrenalina",
+              image: "assets/action.png",
+            },
+          ],
+        ];
+      });
+    }
+    if (localStorage.getItem("confusion")) {
+      let exagons = JSON.parse(localStorage.getItem("confusion"));
+      this.confusion.update((val) => {
+        return [
+          [
+            {
+              ...exagons[0][0],
+              text: "Confusione",
+              image: "assets/confused.png",
+            },
+          ],
+        ];
+      });
+    }
     if (localStorage.getItem("missFortunes"))
       this.missFortunes.set(
         JSON.parse(localStorage.getItem("missFortunes")).map((el) => signal(el))

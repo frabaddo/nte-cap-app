@@ -3,9 +3,13 @@ import { environment } from "./environments/environment";
 import { bootstrapApplication } from "@angular/platform-browser";
 import { AppComponent } from "./app/app.component";
 import { provideAnimations } from "@angular/platform-browser/animations";
-import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
+import { IonicRouteStrategy } from "@ionic/angular";
 import { routes } from "./app/routes";
-import { provideRouter, RouteReuseStrategy } from "@angular/router";
+import {
+  provideRouter,
+  RouteReuseStrategy,
+  withComponentInputBinding,
+} from "@angular/router";
 import { provideIonicAngular } from "@ionic/angular/standalone";
 import { addIcons } from "ionicons";
 import {
@@ -37,7 +41,7 @@ bootstrapApplication(AppComponent, {
       hardwareBackButton: false,
       useSetInputAPI: true,
     }),
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
 });
