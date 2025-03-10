@@ -2,21 +2,19 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { Plugins, StatusBarStyle } from "@capacitor/core";
-import { PopoverController } from "@ionic/angular";
+import { IonicModule, PopoverController } from "@ionic/angular";
 import { InfoComponent } from "./components/info/info.component";
+import { CommonModule } from "@angular/common";
 const { SplashScreen, StatusBar, App } = Plugins;
 
 @Component({
-    selector: "app-root",
-    templateUrl: "app.component.html",
-    styleUrls: ["app.component.scss"],
-    standalone: false
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"],
+  imports: [CommonModule, IonicModule],
 })
 export class AppComponent {
-  constructor(
-    private router: Router,
-    private popover: PopoverController,
-  ) {
+  constructor(private router: Router, private popover: PopoverController) {
     this.initializeApp();
   }
 
@@ -28,7 +26,10 @@ export class AppComponent {
     App.addListener("backButton", () => {
       if (this.router.url == "/" || this.router.url.includes("/home"))
         App.exitApp();
-      else this.router.navigate(["/bag", "home"], { queryParams: { refresh: true } });
+      else
+        this.router.navigate(["/bag", "home"], {
+          queryParams: { refresh: true },
+        });
     });
   }
 

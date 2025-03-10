@@ -4,7 +4,7 @@ import { TestBed, waitForAsync } from "@angular/core/testing";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from "./routes";
 
 import { AppComponent } from "./app.component";
 import { InfoComponent } from "./components/info/info.component";
