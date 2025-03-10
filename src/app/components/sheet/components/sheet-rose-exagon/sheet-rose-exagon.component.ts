@@ -1,11 +1,16 @@
 import { Component, computed, input } from "@angular/core";
-import { IonicModule } from "@ionic/angular";
+import {
+  IonIcon,
+  IonImg,
+  IonPopover,
+  IonThumbnail,
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: "app-sheet-rose-exagon",
   templateUrl: "./sheet-rose-exagon.component.html",
   styleUrls: ["./sheet-rose-exagon.component.scss"],
-  imports: [IonicModule],
+  imports: [IonPopover, IonThumbnail, IonImg, IonIcon],
   host: { "[class.active]": "isOpen()" },
 })
 export class SheetRoseExagonComponent {

@@ -1,13 +1,31 @@
-import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
+import {
+  IonButton,
+  IonCol,
+  IonContent,
+  IonFabButton,
+  IonGrid,
+  IonHeader,
+  IonRefresher,
+  IonRefresherContent,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: "app-privacy",
   templateUrl: "./privacy.page.html",
   styleUrls: ["./privacy.page.scss"],
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [
+    IonHeader,
+    IonContent,
+    IonToolbar,
+    IonTitle,
+    IonGrid,
+    IonRow,
+    IonCol,
+  ],
 })
 export class PrivacyPage {
   constructor() {}

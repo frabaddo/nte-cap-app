@@ -2,7 +2,16 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { Plugins, StatusBarStyle } from "@capacitor/core";
-import { IonicModule, PopoverController } from "@ionic/angular";
+import {
+  IonApp,
+  IonButton,
+  IonHeader,
+  IonIcon,
+  IonRouterOutlet,
+  IonTitle,
+  IonToolbar,
+  PopoverController,
+} from "@ionic/angular/standalone";
 import { InfoComponent } from "./components/info/info.component";
 import { CommonModule } from "@angular/common";
 const { SplashScreen, StatusBar, App } = Plugins;
@@ -11,7 +20,16 @@ const { SplashScreen, StatusBar, App } = Plugins;
   selector: "app-root",
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
-  imports: [CommonModule, IonicModule],
+  imports: [
+    CommonModule,
+    IonApp,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonIcon,
+    IonButton,
+    IonRouterOutlet,
+  ],
 })
 export class AppComponent {
   constructor(private router: Router, private popover: PopoverController) {

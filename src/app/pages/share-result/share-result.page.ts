@@ -4,15 +4,35 @@ import { Tokencolor } from "../../tokencolor.enum";
 import { Bag } from "../../bag";
 import { first } from "rxjs/operators";
 import { Token } from "../../token";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
+import {
+  IonButton,
+  IonCol,
+  IonContent,
+  IonFabButton,
+  IonGrid,
+  IonHeader,
+  IonRefresher,
+  IonRefresherContent,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: "app-share-result",
   templateUrl: "./share-result.page.html",
   styleUrls: ["./share-result.page.scss"],
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [
+    IonHeader,
+    IonContent,
+    IonToolbar,
+    IonTitle,
+    IonRefresher,
+    IonRefresherContent,
+    IonGrid,
+    IonRow,
+    IonCol,
+  ],
 })
 export class ShareResultPage implements OnInit {
   Tokencolor = Tokencolor;

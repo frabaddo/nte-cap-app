@@ -2,9 +2,23 @@ import { Component, OnInit } from "@angular/core";
 import { BagService } from "../../bag.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { trigger, style, animate, transition } from "@angular/animations";
-import { CommonModule } from "@angular/common";
+import {
+  IonButton,
+  IonCheckbox,
+  IonCol,
+  IonContent,
+  IonFabButton,
+  IonGrid,
+  IonHeader,
+  IonIcon,
+  IonInput,
+  IonRefresher,
+  IonRefresherContent,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/angular/standalone";
 import { FormsModule } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
 
 @Component({
   selector: "app-home",
@@ -21,7 +35,23 @@ import { IonicModule } from "@ionic/angular";
       ]),
     ]),
   ],
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [
+    IonHeader,
+    IonContent,
+    IonToolbar,
+    IonTitle,
+    IonRefresher,
+    IonRefresherContent,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonFabButton,
+    IonButton,
+    IonInput,
+    IonCheckbox,
+    IonIcon,
+    FormsModule,
+  ],
 })
 export class HomePage implements OnInit {
   whiteToExtract = 1;

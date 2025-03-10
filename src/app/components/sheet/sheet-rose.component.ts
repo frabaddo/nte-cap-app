@@ -11,13 +11,6 @@ import {
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { SheetRoseExagonComponent } from "./components/sheet-rose-exagon/sheet-rose-exagon.component";
 import {
-  Gesture,
-  GestureController,
-  GestureDetail,
-  IonicModule,
-  ModalController,
-} from "@ionic/angular";
-import {
   BehaviorSubject,
   distinctUntilChanged,
   map,
@@ -28,6 +21,12 @@ import {
   tap,
 } from "rxjs";
 import { SheetRoseEditorComponent } from "./components/sheet-rose-editor/sheet-rose-editor.component";
+import {
+  GestureController,
+  ModalController,
+  Gesture,
+  GestureDetail,
+} from "@ionic/angular/standalone";
 
 export type ExagonInfos = {
   text: string;
@@ -40,7 +39,7 @@ export type ExagonInfos = {
   selector: "app-sheet-rose",
   templateUrl: "./sheet-rose.component.html",
   styleUrls: ["./sheet-rose.component.scss"],
-  imports: [SheetRoseExagonComponent, IonicModule],
+  imports: [SheetRoseExagonComponent],
 })
 export class SheetRoseComponent implements AfterViewInit {
   gestureCtrl = inject(GestureController);

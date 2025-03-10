@@ -1,15 +1,37 @@
 import { Component } from "@angular/core";
 import { BagService } from "../../bag.service";
 import { Router } from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
+import {
+  IonButton,
+  IonCol,
+  IonContent,
+  IonFabButton,
+  IonGrid,
+  IonHeader,
+  IonRefresher,
+  IonRefresherContent,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: "app-token-selection",
   templateUrl: "./token-selection.page.html",
   styleUrls: ["./token-selection.page.scss"],
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [
+    IonHeader,
+    IonContent,
+    IonToolbar,
+    IonTitle,
+    IonRefresher,
+    IonRefresherContent,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonFabButton,
+    IonButton,
+  ],
 })
 export class TokenSelectionPage {
   tokenToExtract = 0;

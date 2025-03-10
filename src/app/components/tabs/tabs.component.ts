@@ -1,12 +1,10 @@
-import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
+import { Component } from "@angular/core";
+import { IonTabBar, IonTabButton, IonTabs } from "@ionic/angular/standalone";
 
 @Component({
   selector: "app-tabs",
   templateUrl: "./tabs.component.html",
   styleUrls: ["./tabs.component.scss"],
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [IonTabs, IonTabBar, IonTabButton],
 })
 export class TabsComponent {}

@@ -3,24 +3,41 @@ import { BagService } from "../../bag.service";
 import { Router } from "@angular/router";
 import { Tokencolor } from "../../tokencolor.enum";
 import { Plugins } from "@capacitor/core";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
+import {
+  IonButton,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonRefresher,
+  IonRefresherContent,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/angular/standalone";
 const { Share } = Plugins;
 
 @Component({
-    selector: "app-result",
-    templateUrl: "./result.page.html",
-    styleUrls: ["./result.page.scss"],
-    imports: [CommonModule, FormsModule, IonicModule]
+  selector: "app-result",
+  templateUrl: "./result.page.html",
+  styleUrls: ["./result.page.scss"],
+  imports: [
+    IonHeader,
+    IonContent,
+    IonToolbar,
+    IonTitle,
+    IonRefresher,
+    IonRefresherContent,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonButton,
+  ],
 })
 export class ResultPage {
   Tokencolor = Tokencolor;
 
-  constructor(
-    public bag: BagService,
-    private router: Router,
-  ) {}
+  constructor(public bag: BagService, private router: Router) {}
 
   ShareResult() {
     let tokens = [];

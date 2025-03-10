@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import {
   Component,
   effect,
@@ -6,8 +5,16 @@ import {
   signal,
   WritableSignal,
 } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { IonicModule, PopoverController } from "@ionic/angular";
+import {
+  PopoverController,
+  IonButton,
+  IonContent,
+  IonFooter,
+  IonHeader,
+  IonPopover,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/angular/standalone";
 import {
   ExagonInfos,
   SheetRoseComponent,
@@ -28,7 +35,16 @@ const exampleRowCel: () => ExagonInfos = () => ({
   selector: "app-sheet",
   templateUrl: "./sheet.page.html",
   styleUrls: ["./sheet.page.scss"],
-  imports: [CommonModule, FormsModule, IonicModule, SheetRoseComponent],
+  imports: [
+    SheetRoseComponent,
+    IonHeader,
+    IonToolbar,
+    IonContent,
+    IonFooter,
+    IonPopover,
+    IonTitle,
+    IonButton,
+  ],
 })
 export class SheetPage {
   popoverCtrl = inject(PopoverController);
