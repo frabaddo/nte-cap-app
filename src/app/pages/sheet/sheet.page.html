@@ -34,12 +34,16 @@
     <div class="sheet-part">
       <h2 class="ion-text-center">DI QUALI RISORSE DISPONGO?</h2>
       <div class="resources-list">
-        @for(resource of resources(); let odd = $odd; track $index){
+        @for(resource of resources(); let odd = $odd; let index = $index; track
+        $index){
         <ion-item [color]="odd ? 'medium' : 'light'">
           <ion-input
             placeholder="Inserigni testo risorsa"
             [(ngModel)]="resource"
           ></ion-input>
+          <ion-button slot="end" fill="clear" (click)="deleteResource(index)">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
         </ion-item>
         }
         <ion-button expand="block" (click)="addResource()"

@@ -17,6 +17,7 @@ import {
   IonToolbar,
   IonInput,
   IonItem,
+  IonIcon,
 } from "@ionic/angular/standalone";
 import {
   ExagonInfos,
@@ -49,6 +50,7 @@ const exampleRowCel: () => ExagonInfos = () => ({
     IonButton,
     IonInput,
     IonItem,
+    IonIcon,
     FormsModule,
   ],
 })
@@ -158,6 +160,11 @@ export class SheetPage {
 
   addResource() {
     this.resources.update((r) => [...r.map((el) => signal(el())), signal("")]);
+  }
+  deleteResource(index: number) {
+    this.resources.update((r) => [
+      ...r.filter((el, i) => i !== index).map((el) => signal(el())),
+    ]);
   }
 
   closeTipPopup() {
