@@ -14,6 +14,9 @@ ion-header::after {
 }
 .rose-container {
   padding: 2rem;
+  app-sheet-rose {
+    --size: 5rem;
+  }
 }
 .exagon-list-container {
   display: flex;
@@ -23,4 +26,17 @@ ion-header::after {
   app-sheet-rose {
     --size: 8rem;
   }
+}
+
+.resources-list {
+  padding: 2rem;
+  max-width: 40rem;
+  margin: auto;
+}
+
+.sheet-responsive {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }

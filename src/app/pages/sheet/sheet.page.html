@@ -4,19 +4,49 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div class="rose-container">
-    <app-sheet-rose [(sheet)]="sheet"></app-sheet-rose>
-  </div>
-  <h2 class="ion-text-center">COSA MI ANNEBBIA LA MENTE?</h2>
-  <div class="exagon-list-container">
-    <app-sheet-rose [disabled]="true" [(sheet)]="confusion"></app-sheet-rose>
-    <app-sheet-rose [disabled]="true" [(sheet)]="adrenalin"></app-sheet-rose>
-  </div>
-  <h2 class="ion-text-center">QUALI SVENTURE MI AFFLIGGONO?</h2>
-  <div class="exagon-list-container">
-    @for(missFortune of missFortunes(); track $index){
-    <app-sheet-rose [(sheet)]="missFortune"></app-sheet-rose>
-    }
+  <div class="sheet-responsive">
+    <div class="sheet-part">
+      <div class="rose-container">
+        <app-sheet-rose [(sheet)]="sheet"></app-sheet-rose>
+      </div>
+    </div>
+    <div class="sheet-part">
+      <h2 class="ion-text-center">COSA MI ANNEBBIA LA MENTE?</h2>
+      <div class="exagon-list-container">
+        <app-sheet-rose
+          [disabled]="true"
+          [(sheet)]="confusion"
+        ></app-sheet-rose>
+        <app-sheet-rose
+          [disabled]="true"
+          [(sheet)]="adrenalin"
+        ></app-sheet-rose>
+      </div>
+    </div>
+    <div class="sheet-part">
+      <h2 class="ion-text-center">QUALI SVENTURE MI AFFLIGGONO?</h2>
+      <div class="exagon-list-container">
+        @for(missFortune of missFortunes(); track $index){
+        <app-sheet-rose [(sheet)]="missFortune"></app-sheet-rose>
+        }
+      </div>
+    </div>
+    <div class="sheet-part">
+      <h2 class="ion-text-center">DI QUALI RISORSE DISPONGO?</h2>
+      <div class="resources-list">
+        @for(resource of resources(); let odd = $odd; track $index){
+        <ion-item [color]="odd ? 'medium' : 'light'">
+          <ion-input
+            placeholder="Inserigni testo risorsa"
+            [(ngModel)]="resource"
+          ></ion-input>
+        </ion-item>
+        }
+        <ion-button expand="block" (click)="addResource()"
+          >Aggiungi risorsa</ion-button
+        >
+      </div>
+    </div>
   </div>
   <ion-popover
     [showBackdrop]="true"

@@ -5,6 +5,7 @@ import {
   signal,
   WritableSignal,
 } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import {
   PopoverController,
   IonButton,
@@ -14,6 +15,8 @@ import {
   IonPopover,
   IonTitle,
   IonToolbar,
+  IonInput,
+  IonItem,
 } from "@ionic/angular/standalone";
 import {
   ExagonInfos,
@@ -44,6 +47,9 @@ const exampleRowCel: () => ExagonInfos = () => ({
     IonPopover,
     IonTitle,
     IonButton,
+    IonInput,
+    IonItem,
+    FormsModule,
   ],
 })
 export class SheetPage {
@@ -62,6 +68,12 @@ export class SheetPage {
     localStorage.setItem(
       "missFortunes",
       JSON.stringify(this.missFortunes().map((el) => el()))
+    );
+  });
+  effectSaveResource = effect(() => {
+    localStorage.setItem(
+      "resources",
+      JSON.stringify(this.resources().map((el) => el()))
     );
   });
 
@@ -99,6 +111,10 @@ export class SheetPage {
     if (localStorage.getItem("missFortunes"))
       this.missFortunes.set(
         JSON.parse(localStorage.getItem("missFortunes")).map((el) => signal(el))
+      );
+    if (localStorage.getItem("resources"))
+      this.resources.set(
+        JSON.parse(localStorage.getItem("resources")).map((el) => signal(el))
       );
     this.firstOpeningTip.set(!!localStorage.getItem("firstOpeningTip"));
   }
@@ -138,6 +154,11 @@ export class SheetPage {
       },
     ],
   ]);
+  resources = signal<WritableSignal<string>[]>([]);
+
+  addResource() {
+    this.resources.update((r) => [...r.map((el) => signal(el())), signal("")]);
+  }
 
   closeTipPopup() {
     localStorage.setItem("firstOpeningTip", "done");
