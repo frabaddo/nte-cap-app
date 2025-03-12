@@ -2,10 +2,13 @@ import {
   Component,
   effect,
   inject,
+  input,
   signal,
+  untracked,
   WritableSignal,
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 import {
   PopoverController,
   IonButton,
@@ -18,6 +21,7 @@ import {
   IonInput,
   IonItem,
   IonIcon,
+  IonList,
 } from "@ionic/angular/standalone";
 import {
   ExagonInfos,
@@ -51,39 +55,49 @@ const exampleRowCel: () => ExagonInfos = () => ({
     IonInput,
     IonItem,
     IonIcon,
+    IonList,
     FormsModule,
   ],
 })
 export class SheetPage {
+  id = inject(ActivatedRoute).snapshot.paramMap.get("id");
   popoverCtrl = inject(PopoverController);
   firstOpeningTip = signal<boolean>(false);
   effectSaveSheet = effect(() => {
-    localStorage.setItem("sheet", JSON.stringify(this.sheet()));
+    localStorage.setItem(this.id + "-" + "sheet", JSON.stringify(this.sheet()));
   });
   effectSaveConfusion = effect(() => {
-    localStorage.setItem("confusion", JSON.stringify(this.confusion()));
+    localStorage.setItem(
+      this.id + "-" + "confusion",
+      JSON.stringify(this.confusion())
+    );
   });
   effectSaveAdrenalin = effect(() => {
-    localStorage.setItem("adrenalin", JSON.stringify(this.adrenalin()));
+    localStorage.setItem(
+      this.id + "-" + "adrenalin",
+      JSON.stringify(this.adrenalin())
+    );
   });
   effectSaveMissFortunes = effect(() => {
     localStorage.setItem(
-      "missFortunes",
+      this.id + "-" + "missFortunes",
       JSON.stringify(this.missFortunes().map((el) => el()))
     );
   });
   effectSaveResource = effect(() => {
     localStorage.setItem(
-      "resources",
+      this.id + "-" + "resources",
       JSON.stringify(this.resources().map((el) => el()))
     );
   });
 
   constructor() {
-    if (localStorage.getItem("sheet"))
-      this.sheet.set(JSON.parse(localStorage.getItem("sheet")));
-    if (localStorage.getItem("adrenalin")) {
-      let exagons = JSON.parse(localStorage.getItem("adrenalin"));
+    if (localStorage.getItem(this.id + "-" + "sheet"))
+      this.sheet.set(JSON.parse(localStorage.getItem(this.id + "-" + "sheet")));
+    if (localStorage.getItem(this.id + "-" + "adrenalin")) {
+      let exagons = JSON.parse(
+        localStorage.getItem(this.id + "-" + "adrenalin")
+      );
       this.adrenalin.update((val) => {
         return [
           [
@@ -96,8 +110,10 @@ export class SheetPage {
         ];
       });
     }
-    if (localStorage.getItem("confusion")) {
-      let exagons = JSON.parse(localStorage.getItem("confusion"));
+    if (localStorage.getItem(this.id + "-" + "confusion")) {
+      let exagons = JSON.parse(
+        localStorage.getItem(this.id + "-" + "confusion")
+      );
       this.confusion.update((val) => {
         return [
           [
@@ -110,13 +126,17 @@ export class SheetPage {
         ];
       });
     }
-    if (localStorage.getItem("missFortunes"))
+    if (localStorage.getItem(this.id + "-" + "missFortunes"))
       this.missFortunes.set(
-        JSON.parse(localStorage.getItem("missFortunes")).map((el) => signal(el))
+        JSON.parse(localStorage.getItem(this.id + "-" + "missFortunes")).map(
+          (el) => signal(el)
+        )
       );
-    if (localStorage.getItem("resources"))
+    if (localStorage.getItem(this.id + "-" + "resources"))
       this.resources.set(
-        JSON.parse(localStorage.getItem("resources")).map((el) => signal(el))
+        JSON.parse(localStorage.getItem(this.id + "-" + "resources")).map(
+          (el) => signal(el)
+        )
       );
     this.firstOpeningTip.set(!!localStorage.getItem("firstOpeningTip"));
   }

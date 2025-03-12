@@ -31,9 +31,9 @@
         }
       </div>
     </div>
-    <div class="sheet-part">
+    <div class="sheet-part resources-list">
       <h2 class="ion-text-center">DI QUALI RISORSE DISPONGO?</h2>
-      <div class="resources-list">
+      <ion-list class="ion-no-padding ion-margin-vertical">
         @for(resource of resources(); let odd = $odd; let index = $index; track
         $index){
         <ion-item [color]="odd ? 'medium' : 'light'">
@@ -46,10 +46,10 @@
           </ion-button>
         </ion-item>
         }
-        <ion-button expand="block" (click)="addResource()"
-          >Aggiungi risorsa</ion-button
-        >
-      </div>
+      </ion-list>
+      <ion-button expand="block" (click)="addResource()"
+        >Aggiungi risorsa</ion-button
+      >
     </div>
   </div>
   <ion-popover

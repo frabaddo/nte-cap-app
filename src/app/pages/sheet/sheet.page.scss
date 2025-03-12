@@ -29,14 +29,15 @@ ion-header::after {
 }
 
 .resources-list {
-  padding: 2rem;
-  max-width: 40rem;
-  margin: auto;
+  padding: 0 2rem;
+  max-width: 50rem;
+  flex: 1;
+  min-width: 25rem;
 }
 
 .sheet-responsive {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: baseline;
 }

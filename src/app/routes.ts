@@ -51,7 +51,7 @@ export const routes: Routes = [
         ],
       },
       {
-        path: "sheet",
+        path: "sheet/:id",
         loadComponent: () =>
           import("./pages/sheet/sheet.page").then((m) => m.SheetPage),
       },
