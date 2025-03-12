@@ -1,4 +1,4 @@
-import { enableProdMode, importProvidersFrom } from "@angular/core";
+import { enableProdMode, importProvidersFrom, isDevMode } from "@angular/core";
 import { environment } from "./environments/environment";
 import { bootstrapApplication } from "@angular/platform-browser";
 import { AppComponent } from "./app/app.component";
@@ -20,6 +20,7 @@ import {
   close,
   remove,
 } from "ionicons/icons";
+import { provideServiceWorker } from "@angular/service-worker";
 
 addIcons({
   add,
@@ -43,6 +44,10 @@ bootstrapApplication(AppComponent, {
     }),
     provideRouter(routes, withComponentInputBinding()),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideServiceWorker("ngsw-worker.js", {
+      enabled: !isDevMode(),
+      registrationStrategy: "registerWhenStable:30000",
+    }),
   ],
 });
 // platformBrowserDynamic()
