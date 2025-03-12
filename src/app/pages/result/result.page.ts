@@ -12,6 +12,7 @@ import {
   IonRefresher,
   IonRefresherContent,
   IonRow,
+  IonText,
   IonTitle,
   IonToolbar,
 } from "@ionic/angular/standalone";
@@ -32,6 +33,7 @@ const { Share } = Plugins;
     IonRow,
     IonCol,
     IonButton,
+    IonText,
   ],
 })
 export class ResultPage {
