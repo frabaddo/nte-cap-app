@@ -7,9 +7,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:dev": "npm run swap-manifest & ng build --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "swap-manifest": "cp ./src/manifest-dev.json ./src/manifest.json",
     "resources": "cordova-res ios && cordova-res android --type splash && node scripts/resources.js"
   },
   "private": true,
