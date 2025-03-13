@@ -29,15 +29,17 @@ import {
 } from "src/app/components/sheet/sheet-rose.component";
 
 const exampleRowCel: () => ExagonInfos = () => ({
-  text: "", //"Lorem ipsum dolor sit amet",
-  image:
-    // Math.random() >= 0.5
-    //   ? "https://www.svgrepo.com/show/532035/cloud-bolt.svg"
-    //   : Math.random() >= 0.5
-    //   ? "https://cdn.vectorstock.com/i/1000v/48/06/devil-ui-icon-dark-fantasy-game-sign-vector-43854806.jpg"
-    //   :
-    null,
+  text: "",
+  image: null,
 });
+
+type Sheet = {
+  sheet: ExagonInfos[][];
+  confusion: ExagonInfos[][];
+  adrenalin: ExagonInfos[][];
+  missFortunes: ExagonInfos[][][];
+  resources: string[];
+};
 
 @Component({
   selector: "app-sheet",
@@ -63,81 +65,29 @@ export class SheetPage {
   id = inject(ActivatedRoute).snapshot.paramMap.get("id");
   popoverCtrl = inject(PopoverController);
   firstOpeningTip = signal<boolean>(false);
-  effectSaveSheet = effect(() => {
-    localStorage.setItem(this.id + "-" + "sheet", JSON.stringify(this.sheet()));
-  });
-  effectSaveConfusion = effect(() => {
+  effectSaveSheetData = effect(() => {
     localStorage.setItem(
-      this.id + "-" + "confusion",
-      JSON.stringify(this.confusion())
-    );
-  });
-  effectSaveAdrenalin = effect(() => {
-    localStorage.setItem(
-      this.id + "-" + "adrenalin",
-      JSON.stringify(this.adrenalin())
-    );
-  });
-  effectSaveMissFortunes = effect(() => {
-    localStorage.setItem(
-      this.id + "-" + "missFortunes",
-      JSON.stringify(this.missFortunes().map((el) => el()))
-    );
-  });
-  effectSaveResource = effect(() => {
-    localStorage.setItem(
-      this.id + "-" + "resources",
-      JSON.stringify(this.resources().map((el) => el()))
+      this.id + "-" + "sheet",
+      JSON.stringify({
+        sheet: this.sheet(),
+        confusion: this.confusion(),
+        adrenalin: this.adrenalin(),
+        missFortunes: this.missFortunes().map((el) => el()),
+        resources: this.resources().map((el) => el()),
+      })
     );
   });
 
   constructor() {
-    if (localStorage.getItem(this.id + "-" + "sheet"))
-      this.sheet.set(JSON.parse(localStorage.getItem(this.id + "-" + "sheet")));
-    if (localStorage.getItem(this.id + "-" + "adrenalin")) {
-      let exagons = JSON.parse(
-        localStorage.getItem(this.id + "-" + "adrenalin")
-      );
-      this.adrenalin.update((val) => {
-        return [
-          [
-            {
-              ...exagons[0][0],
-              text: "Adrenalina",
-              image: "assets/action.png",
-            },
-          ],
-        ];
-      });
+    let data = localStorage.getItem(this.id + "-" + "sheet");
+    if (data) {
+      let sheet: Sheet = JSON.parse(data);
+      this.sheet.set(sheet.sheet);
+      this.adrenalin.set(sheet.adrenalin);
+      this.confusion.set(sheet.confusion);
+      this.missFortunes.set(sheet.missFortunes.map((el) => signal(el)));
+      this.resources.set(sheet.resources.map((el) => signal(el)));
     }
-    if (localStorage.getItem(this.id + "-" + "confusion")) {
-      let exagons = JSON.parse(
-        localStorage.getItem(this.id + "-" + "confusion")
-      );
-      this.confusion.update((val) => {
-        return [
-          [
-            {
-              ...exagons[0][0],
-              text: "Confusione",
-              image: "assets/confused.png",
-            },
-          ],
-        ];
-      });
-    }
-    if (localStorage.getItem(this.id + "-" + "missFortunes"))
-      this.missFortunes.set(
-        JSON.parse(localStorage.getItem(this.id + "-" + "missFortunes")).map(
-          (el) => signal(el)
-        )
-      );
-    if (localStorage.getItem(this.id + "-" + "resources"))
-      this.resources.set(
-        JSON.parse(localStorage.getItem(this.id + "-" + "resources")).map(
-          (el) => signal(el)
-        )
-      );
     this.firstOpeningTip.set(!!localStorage.getItem("firstOpeningTip"));
   }
 
@@ -160,7 +110,7 @@ export class SheetPage {
     signal([new Array(1).fill(exampleRowCel())]),
   ]);
 
-  confusion = signal<ExagonInfos[][]>([
+  adrenalin = signal<ExagonInfos[][]>([
     [
       {
         text: "Adrenalina",
@@ -168,7 +118,7 @@ export class SheetPage {
       },
     ],
   ]);
-  adrenalin = signal<ExagonInfos[][]>([
+  confusion = signal<ExagonInfos[][]>([
     [
       {
         text: "Confusione",
