@@ -53,9 +53,12 @@ export class SheetsPage {
 
   addNewChar() {
     let newId =
-      Math.max(...(this.charactersIds().length ? this.charactersIds() : [0])) +
+      Math.max(...(this.charactersIds()?.length ? this.charactersIds() : [0])) +
       1;
-    let newChars = [...this.charactersIds(), newId];
+    let newChars = [
+      ...(this.charactersIds()?.length ? this.charactersIds() : []),
+      newId,
+    ];
 
     this.charactersIds.set(newChars);
     localStorage.setItem("characters", JSON.stringify(newChars));
