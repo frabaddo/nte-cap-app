@@ -4,6 +4,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
+  <div class="name-container">
+    <ion-input placeholder="Nome personaggio..." [(ngModel)]="name"></ion-input>
+  </div>
   <div class="sheet-responsive">
     <div class="sheet-part">
       <div class="rose-container">
@@ -49,6 +52,15 @@
       </ion-list>
       <ion-button expand="block" (click)="addResource()"
         >Aggiungi risorsa</ion-button
+      >
+    </div>
+    <div class="sheet-part resources-list">
+      <ion-button
+        class="ion-margin-top"
+        expand="block"
+        color="danger"
+        (click)="deleteCharacter()"
+        >Cancella personaggio</ion-button
       >
     </div>
   </div>

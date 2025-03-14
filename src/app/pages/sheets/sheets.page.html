@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="light" mode="md"> NOT THE END </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <h1 class="ion-text-center ion-text-uppercase">Schede personaggio</h1>
+  <ion-list>
+    @for(char of charactersData(); track char.id){
+    <ion-item button detail routerLink="./{{char.id}}">{{char.name}}</ion-item>
+    }
+    <ion-button expand="block" (click)="addNewChar()"
+      >Aggiungi personaggio</ion-button
+    >
+  </ion-list>
+</ion-content>

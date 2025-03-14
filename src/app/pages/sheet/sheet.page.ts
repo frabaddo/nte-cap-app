@@ -8,7 +8,7 @@ import {
   WritableSignal,
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   PopoverController,
   IonButton,
@@ -34,6 +34,7 @@ const exampleRowCel: () => ExagonInfos = () => ({
 });
 
 type Sheet = {
+  name: string;
   sheet: ExagonInfos[][];
   confusion: ExagonInfos[][];
   adrenalin: ExagonInfos[][];
@@ -65,10 +66,12 @@ export class SheetPage {
   id = inject(ActivatedRoute).snapshot.paramMap.get("id");
   popoverCtrl = inject(PopoverController);
   firstOpeningTip = signal<boolean>(false);
+  router = inject(Router);
   effectSaveSheetData = effect(() => {
     localStorage.setItem(
       this.id + "-" + "sheet",
       JSON.stringify({
+        name: this.name(),
         sheet: this.sheet(),
         confusion: this.confusion(),
         adrenalin: this.adrenalin(),
@@ -82,6 +85,7 @@ export class SheetPage {
     let data = localStorage.getItem(this.id + "-" + "sheet");
     if (data) {
       let sheet: Sheet = JSON.parse(data);
+      this.name.set(sheet.name);
       this.sheet.set(sheet.sheet);
       this.adrenalin.set(sheet.adrenalin);
       this.confusion.set(sheet.confusion);
@@ -90,6 +94,8 @@ export class SheetPage {
     }
     this.firstOpeningTip.set(!!localStorage.getItem("firstOpeningTip"));
   }
+
+  name = signal("");
 
   sheet = signal<ExagonInfos[][]>([
     new Array(1).fill(exampleRowCel()),
@@ -140,5 +146,18 @@ export class SheetPage {
   closeTipPopup() {
     localStorage.setItem("firstOpeningTip", "done");
     this.firstOpeningTip.set(true);
+  }
+
+  deleteCharacter() {
+    localStorage.setItem(
+      "characters",
+      JSON.stringify(
+        (JSON.parse(localStorage.getItem("characters")) as number[]).filter(
+          (el) => el !== +this.id
+        )
+      )
+    );
+    localStorage.removeItem(this.id + "-" + "sheet");
+    this.router.navigate(["sheets"]);
   }
 }
